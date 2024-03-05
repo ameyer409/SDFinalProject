@@ -12,11 +12,11 @@
 
 		<properties>
 			<property name="jakarta.persistence.jdbc.url"
-				value="jdbc:mysql://localhost:3306/FIXMEEEEEEEEEEEE?useSSL=false&amp;useLegacyDatetimeCode=false&amp;serverTimezone=US/Pacific" />
+				value="jdbc:mysql://localhost:3306/enchanteddb?useSSL=false&amp;useLegacyDatetimeCode=false&amp;serverTimezone=US/Pacific" />
 			<property name="jakarta.persistence.jdbc.user"
-				value="FIXMEEEEEEEEEEEE" />
+				value="enchanted" />
 			<property name="jakarta.persistence.jdbc.password"
-				value="FIXMEEEEEEEEEEEE" />
+				value="enchanted" />
 			<property name="jakarta.persistence.jdbc.driver"
 				value="com.mysql.cj.jdbc.Driver" />
 
