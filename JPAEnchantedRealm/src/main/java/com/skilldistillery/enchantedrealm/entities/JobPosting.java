@@ -16,6 +16,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
@@ -50,13 +51,17 @@ public class JobPosting {
 	@ManyToOne
 	@JoinColumn(name="industry_id")
 	private Industry industry;
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="company_id")
 	private Company company;
 	@JsonIgnore
 	@OneToMany(mappedBy="jobPosting")
 	private List<Application> apps;
-	@ManyToMany(mappedBy="jobPostings")
+	@ManyToMany
+	@JoinTable(name="job_benefit_has_job_posting",
+	joinColumns= @JoinColumn(name="job_posting_id"),
+	inverseJoinColumns= @JoinColumn(name="job_benefit_id"))
 	private List<JobBenefit> benefits;
 	
 	public JobPosting() {

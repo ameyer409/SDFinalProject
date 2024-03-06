@@ -22,7 +22,7 @@ public class JobBenefit {
 	private int id; 
 	private String name;
 	@JsonIgnore
-	@ManyToMany(mappedBy="jobBenefits")
+	@ManyToMany(mappedBy="benefits")
 	private List<JobPosting> postings;
 	
 	public JobBenefit() {
