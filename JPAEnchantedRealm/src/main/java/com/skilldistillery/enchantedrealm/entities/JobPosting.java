@@ -188,6 +188,14 @@ public class JobPosting {
 		this.benefits = jobBenefits;
 	}
 	
+	public List<JobBenefit> getBenefits() {
+		return benefits;
+	}
+
+	public void setBenefits(List<JobBenefit> benefits) {
+		this.benefits = benefits;
+	}
+
 	public void addApplication(Application application) {
 		if(apps == null) {
 			apps = new ArrayList<>();

@@ -21,7 +21,7 @@ public class JobBenefit {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id; 
 	private String name;
-//	@JsonIgnore
+	@JsonIgnore
 	@ManyToMany(mappedBy="benefits")
 	private List<JobPosting> postings;
 	
