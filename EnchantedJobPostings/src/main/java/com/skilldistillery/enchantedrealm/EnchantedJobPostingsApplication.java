@@ -14,7 +14,7 @@ public class EnchantedJobPostingsApplication {
 	}
 
 	@Bean
-	 PasswordEncoder configurePasswordEncoder() {
+	PasswordEncoder configurePasswordEncoder() {
 	   return new BCryptPasswordEncoder();
 	}
 }
