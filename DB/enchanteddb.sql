@@ -39,10 +39,10 @@ DROP TABLE IF EXISTS `address` ;
 
 CREATE TABLE IF NOT EXISTS `address` (
   `id` INT NOT NULL,
+  `street` VARCHAR(100) NULL,
   `city` VARCHAR(45) NULL,
   `state` VARCHAR(45) NULL,
   `zip_code` VARCHAR(45) NULL,
-  `street` VARCHAR(100) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -262,6 +262,114 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 START TRANSACTION;
 USE `enchanteddb`;
 INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `created_at`) VALUES (1, 'admin', '$2a$10$nShOi5/f0bKNvHB8x0u3qOpeivazbuN0NE4TO0LGvQiTMafaBxLJS', 1, NULL, NULL);
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `created_at`) VALUES (2, 'foundinguser', '$2a$10$nShOi5/f0bKNvHB8x0u3qOpeivazbuN0NE4TO0LGvQiTMafaBxLJS', 1, 'Applicant', NULL);
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `created_at`) VALUES (3, 'foundingcompany', '$2a$10$nShOi5/f0bKNvHB8x0u3qOpeivazbuN0NE4TO0LGvQiTMafaBxLJS', 1, 'Company', NULL);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `address`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `enchanteddb`;
+INSERT INTO `address` (`id`, `street`, `city`, `state`, `zip_code`) VALUES (1, 'Willy Wonka Way', 'Wonka', 'Land', '12345');
+INSERT INTO `address` (`id`, `street`, `city`, `state`, `zip_code`) VALUES (2, '1234 First St', 'New York', 'New York', '12345');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `company`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `enchanteddb`;
+INSERT INTO `company` (`id`, `name`, `overview`, `address_id`, `enabled`, `logo`, `user_id`) VALUES (1, 'MediLife Solutions', 'MediLife Solutions is a cutting-edge healthcare company specializing in personalized medicine. Using advanced technologies and innovative approaches, we provide tailored treatment plans and therapies to individuals worldwide. From genetic testing to precision medicine, our team of experts is dedicated to improving patient outcomes and revolutionizing the healthcare industry.', 2, 1, 'https://media.licdn.com/dms/image/C5612AQFPA97NHw212A/article-cover_image-shrink_600_2000/0/1520155840320?e=2147483647&v=beta&t=1jCjsZ_9KUmsqELFD5wkXVE96IMx3Npc33Mdi8osodM', 3);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `industry`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `enchanteddb`;
+INSERT INTO `industry` (`id`, `name`) VALUES (1, 'Healthcare');
+INSERT INTO `industry` (`id`, `name`) VALUES (2, 'Technology');
+INSERT INTO `industry` (`id`, `name`) VALUES (3, 'Finance');
+INSERT INTO `industry` (`id`, `name`) VALUES (4, 'Retail');
+INSERT INTO `industry` (`id`, `name`) VALUES (5, 'Hospitality');
+INSERT INTO `industry` (`id`, `name`) VALUES (6, 'Education');
+INSERT INTO `industry` (`id`, `name`) VALUES (7, 'Manufacturing');
+INSERT INTO `industry` (`id`, `name`) VALUES (8, 'Real Estate');
+INSERT INTO `industry` (`id`, `name`) VALUES (9, 'Construction');
+INSERT INTO `industry` (`id`, `name`) VALUES (10, 'Energy');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `job_posting`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `enchanteddb`;
+INSERT INTO `job_posting` (`id`, `title`, `description`, `company_id`, `minimum_salary`, `maximum_salary`, `created_at`, `updated_at`, `positions`, `address_id`, `enabled`, `requirements`, `industry_id`) VALUES (1, 'Research Scientist', 'MedLife Solutions, a leading biopharmaceutical company, is seeking a highly motivated Research Scientist to join our innovative team. The ideal candidate will conduct research and development activities focusing on the discovery of novel therapeutic targets and drug candidates. Responsibilities include designing and executing experiments, analyzing data, and presenting findings to cross-functional teams. Candidates should have a Ph.D. in biochemistry, pharmacology, or related field, with experience in drug discovery and proficiency in molecular biology techniques.', 1, 80000, 100000, NULL, NULL, 1, 1, 1, NULL, 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `application_status`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `enchanteddb`;
+INSERT INTO `application_status` (`id`, `name`) VALUES (1, 'Pending');
+INSERT INTO `application_status` (`id`, `name`) VALUES (2, 'Accepted');
+INSERT INTO `application_status` (`id`, `name`) VALUES (3, 'Denied');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `applicant`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `enchanteddb`;
+INSERT INTO `applicant` (`id`, `address_id`, `first_name`, `last_name`, `birthdate`, `email`, `eligible_to_work`, `relocation`, `profile_img`, `user_id`, `updated_at`, `about_me`) VALUES (1, 1, 'Willy', 'Wonka', '01/01/01', 'willywonka@gmail.com', 1, 1, 'https://upload.wikimedia.org/wikipedia/en/thumb/5/5e/Johnny_Depp_as_Willy_Wonka.jpg/220px-Johnny_Depp_as_Willy_Wonka.jpg', 2, NULL, 'I like making candy');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `application`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `enchanteddb`;
+INSERT INTO `application` (`id`, `job_posting_id`, `application_status_id`, `applicant_id`, `notes`, `created_at`, `updated_at`) VALUES (1, 1, 1, 1, 'Hope I can get this job. it would be great!', NULL, NULL);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `job_benefit`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `enchanteddb`;
+INSERT INTO `job_benefit` (`id`, `name`) VALUES (1, 'Medical Insurance');
+INSERT INTO `job_benefit` (`id`, `name`) VALUES (2, 'Dental Insurance');
+INSERT INTO `job_benefit` (`id`, `name`) VALUES (3, 'Vision Insurance');
+INSERT INTO `job_benefit` (`id`, `name`) VALUES (4, 'Life Insurance');
+INSERT INTO `job_benefit` (`id`, `name`) VALUES (5, 'Mental Health');
+INSERT INTO `job_benefit` (`id`, `name`) VALUES (6, 'Retirement');
+INSERT INTO `job_benefit` (`id`, `name`) VALUES (7, 'Paid Time Off');
+INSERT INTO `job_benefit` (`id`, `name`) VALUES (8, 'Paid Vacation Time');
+INSERT INTO `job_benefit` (`id`, `name`) VALUES (9, 'Paid Sick Leave');
+INSERT INTO `job_benefit` (`id`, `name`) VALUES (10, 'Extended Leave');
+INSERT INTO `job_benefit` (`id`, `name`) VALUES (11, 'Family Leave');
+INSERT INTO `job_benefit` (`id`, `name`) VALUES (12, 'Disability benefits');
+INSERT INTO `job_benefit` (`id`, `name`) VALUES (13, 'Workers Compensation');
+INSERT INTO `job_benefit` (`id`, `name`) VALUES (14, 'Travel Expenses');
+INSERT INTO `job_benefit` (`id`, `name`) VALUES (15, 'Investment Opportunities');
 
 COMMIT;
 
