@@ -373,3 +373,18 @@ INSERT INTO `job_benefit` (`id`, `name`) VALUES (15, 'Investment Opportunities')
 
 COMMIT;
 
+
+-- -----------------------------------------------------
+-- Data for table `job_benefit_has_job_posting`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `enchanteddb`;
+INSERT INTO `job_benefit_has_job_posting` (`job_benefit_id`, `job_posting_id`) VALUES (1, 1);
+INSERT INTO `job_benefit_has_job_posting` (`job_benefit_id`, `job_posting_id`) VALUES (2, 1);
+INSERT INTO `job_benefit_has_job_posting` (`job_benefit_id`, `job_posting_id`) VALUES (3, 1);
+INSERT INTO `job_benefit_has_job_posting` (`job_benefit_id`, `job_posting_id`) VALUES (4, 1);
+INSERT INTO `job_benefit_has_job_posting` (`job_benefit_id`, `job_posting_id`) VALUES (5, 1);
+INSERT INTO `job_benefit_has_job_posting` (`job_benefit_id`, `job_posting_id`) VALUES (6, 1);
+
+COMMIT;
+
