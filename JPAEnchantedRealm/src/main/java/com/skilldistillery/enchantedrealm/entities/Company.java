@@ -93,6 +93,14 @@ public class Company {
 		this.user = user;
 	}
 	
+	public List<JobPosting> getPostings() {
+		return postings;
+	}
+
+	public void setPostings(List<JobPosting> postings) {
+		this.postings = postings;
+	}
+
 	public void addJobPosting(JobPosting jobPosting) {
 		if(postings == null) {
 			postings = new ArrayList<>();

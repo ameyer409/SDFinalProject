@@ -133,6 +133,22 @@ public class Applicant {
 		this.aboutMe = aboutMe;
 	}
 
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public List<Application> getApplications() {
+		return applications;
+	}
+
+	public void setApplications(List<Application> applications) {
+		this.applications = applications;
+	}
+
 	public Address getAddress() {
 		return address;
 	}
