@@ -1,14 +1,15 @@
 package com.skilldistillery.enchantedrealm.entities;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
 
 @Entity
 public class User {
@@ -25,19 +26,9 @@ public class User {
 	
 	private String role;
 	
-	private String email;
-	
-	@Column(name="first_name")
-	private String firstName;
-	
-	@Column(name="last_name")
-	private String lastName;
-	
-	private int age;
-	
-	@OneToOne
-	@JoinColumn(name="location_id")
-	private Location location;
+	@CreationTimestamp
+	@Column(name="created_at")
+	private LocalDateTime createdAt;
 	
 	public User() {
 		
@@ -83,6 +74,14 @@ public class User {
 		this.role = role;
 	}
 
+	public LocalDateTime getCreatedAt() {
+		return createdAt;
+	}
+	
+	public void setCreatedAt(LocalDateTime createdAt) {
+		this.createdAt = createdAt;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -103,7 +102,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", enabled=" + enabled
-				+ ", role=" + role + "]";
+				+ ", role=" + role + ", createdAt=" + createdAt + "]";
 	}
 	
 	

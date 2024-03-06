@@ -10,71 +10,71 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.OneToMany;
 
 @Entity
-@Table(name="job_benefit")
-public class JobBenefit {
+public class Industry {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id; 
+	private int id;
 	private String name;
 	@JsonIgnore
-	@ManyToMany(mappedBy="jobBenefits")
-	private List<JobPosting> postings;
+	@OneToMany(mappedBy="industry")
+	private List<JobPosting> jobPostings;
 	
-	public JobBenefit() {
+	public Industry() {
 		super();
 	}
-
+	
 	public int getId() {
 		return id;
 	}
-
+	
 	public void setId(int id) {
 		this.id = id;
 	}
-
+	
 	public String getName() {
 		return name;
 	}
-
+	
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	
 	public List<JobPosting> getJobPostings() {
-		return postings;
-	}
-
-	public void setJobPostings(List<JobPosting> jobPostings) {
-		this.postings = jobPostings;
+		return jobPostings;
 	}
 	
-	public void addJobPosting(JobPosting jobPosting) {
-		if(postings == null) {
-			postings = new ArrayList<>();
+	public void setJobPostings(List<JobPosting> jobPostings) {
+		this.jobPostings = jobPostings;
+	}
+	
+	public void addJobPostiong(JobPosting jobPosting) {
+		if(jobPostings == null) {
+			jobPostings = new ArrayList<>();
 		}
-		if(!postings.contains(jobPosting)) {
-			postings.add(jobPosting);
-			jobPosting.addJobBenefit(this);
+		if(!jobPostings.contains(jobPosting)) {
+			jobPostings.add(jobPosting);
+			if(jobPosting.getIndustry() != null) {
+				jobPosting.getIndustry().removeJobPosting(jobPosting);
+			}
+			jobPosting.setIndustry(this);
 		}
 	}
 	
 	public void removeJobPosting(JobPosting jobPosting) {
-		if(postings != null && postings.contains(jobPosting)) {
-			postings.remove(jobPosting);
-			jobPosting.removeJobBenefit(this);
+		if(jobPostings != null && jobPostings.contains(jobPosting)) {
+			jobPostings.remove(jobPosting);
+			jobPosting.setIndustry(null);
 		}
 	}
-
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
 	}
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -83,13 +83,12 @@ public class JobBenefit {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		JobBenefit other = (JobBenefit) obj;
+		Industry other = (Industry) obj;
 		return id == other.id;
 	}
-
 	@Override
 	public String toString() {
-		return "JobBenefit [id=" + id + ", name=" + name + ", jobPostings=" + postings + "]";
+		return "Industry [id=" + id + ", name=" + name + ", jobPostings=" + jobPostings + "]";
 	}
 	
 	
