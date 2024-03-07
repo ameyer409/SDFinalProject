@@ -28,43 +28,53 @@ public class JobPostingController {
 		return jpService.index();
 	}
 	
-	@GetMapping("jobpostings/{name}")
+	@GetMapping("jobpostings/search/title/{title}")
+	public List<JobPosting> findByTitle(@PathVariable("title") String title, HttpServletRequest req, HttpServletResponse res) {
+		return jpService.findByTitle(title);
+	}
+	
+	@GetMapping("jobpostings/search/company/{name}")
 	public List<JobPosting> findByCompanyName(@PathVariable("name") String name, HttpServletRequest req, HttpServletResponse res) {
 		return jpService.findByCompany(name);
 	}
 	
-	@GetMapping("jobpostings/{low}/{high}")
+	@GetMapping("jobpostings/search/{low}/{high}")
 	public List<JobPosting> findBySalaryRange(@PathVariable("low") int low, @PathVariable("high") int high, HttpServletRequest req, HttpServletResponse res) {
 		return jpService.findBySalary(low, high);
 	}
 	
-	@GetMapping("jobpostings/industry/{name}")
+	@GetMapping("jobpostings/search/industry/{name}")
 	public List<JobPosting> findByIndustry(@PathVariable("name") String name, HttpServletRequest req, HttpServletResponse res) {
 		return jpService.findByIndustry(name);
 	}
 	
-	@GetMapping("jobpostings/location/city/{city}")
-	public List<JobPosting> findByCity(@PathVariable("city") String name, HttpServletRequest req, HttpServletResponse res) {
-		return jpService.findByCity(name);
+	@GetMapping("jobpostings/search/location/city/{city}")
+	public List<JobPosting> findByCity(@PathVariable("city") String city, HttpServletRequest req, HttpServletResponse res) {
+		return jpService.findByCity(city);
 	}
 	
-	
-	@GetMapping("jobpostings/location/state/{state}")
-	public List<JobPosting> findByState(@PathVariable("state") String name, HttpServletRequest req, HttpServletResponse res) {
-		return jpService.findByState(name);
+	@GetMapping("jobpostings/search/location/state/{state}")
+	public List<JobPosting> findByState(@PathVariable("state") String state, HttpServletRequest req, HttpServletResponse res) {
+		return jpService.findByState(state);
 	}
 	
-	
-	@GetMapping("jobpostings/location/zipcode/{zip}")
+	@GetMapping("jobpostings/search/location/zipcode/{zip}")
 	public List<JobPosting> findByZipcode(@PathVariable("zip") String zip, HttpServletRequest req, HttpServletResponse res) {
 		return jpService.findByZipCode(zip);
 	}
 	
-	
-	@GetMapping("jobpostings/location/{city}/{state}")
+	@GetMapping("jobpostings/search/location/{city}/{state}")
 	public List<JobPosting> findBycity(@PathVariable("city") String city, @PathVariable("state") String state, HttpServletRequest req, HttpServletResponse res) {
 		return jpService.findByCityAndState(city, state);
 	}
 	
+	@GetMapping("jobpostings/{id}")
+	public JobPosting findById(@PathVariable("id") int id, HttpServletRequest req, HttpServletResponse res) {
+		JobPosting jp = jpService.findById(id);
+		if(jp == null) {
+			res.setStatus(404);
+		}
+		return jp;
+	}
 	
 }

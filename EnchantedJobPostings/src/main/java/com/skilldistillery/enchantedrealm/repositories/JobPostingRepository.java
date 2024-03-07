@@ -8,7 +8,10 @@ import com.skilldistillery.enchantedrealm.entities.JobPosting;
 
 public interface JobPostingRepository extends JpaRepository<JobPosting, Integer>{
 
-	List<JobPosting> findByCompany_name(String company);
+	
+	List<JobPosting> findByTitleLike(String title);
+	
+	List<JobPosting> findByCompany_nameLike(String company);
 	
 	List<JobPosting> findByMinimumSalaryGreaterThanEqualAndMaximumSalaryLessThanEqual(int lowest, int highest);
 	
@@ -20,4 +23,5 @@ public interface JobPostingRepository extends JpaRepository<JobPosting, Integer>
 	List<JobPosting> findByAddress_state(String state);
 	List<JobPosting> findByAddress_zipCode(String zip);
 	List<JobPosting> findByAddress_cityAndAddress_state(String city, String state);
+	
 }

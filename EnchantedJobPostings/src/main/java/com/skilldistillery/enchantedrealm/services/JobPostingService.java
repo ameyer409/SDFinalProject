@@ -21,4 +21,8 @@ public interface JobPostingService {
 	public List<JobPosting> findByZipCode(String zip);
 	
 	public List<JobPosting> findByCityAndState(String city, String state);
+	
+	public JobPosting findById(int id);
+
+	public List<JobPosting> findByTitle(String title);
 }

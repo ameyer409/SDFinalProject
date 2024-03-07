@@ -1,6 +1,7 @@
 package com.skilldistillery.enchantedrealm.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,10 +19,15 @@ public class JobPostingServiceImpl implements JobPostingService{
 	public List<JobPosting> index() {
 		return jpRepo.findAll();
 	}
+	
+	@Override
+	public List<JobPosting> findByTitle(String title) {
+		return jpRepo.findByTitleLike("%" + title + "%");
+	}
 
 	@Override
 	public List<JobPosting> findByCompany(String name) {
-		return jpRepo.findByCompany_name(name);
+		return jpRepo.findByCompany_nameLike("%" + name + "%");
 	}
 
 	@Override
@@ -52,6 +58,16 @@ public class JobPostingServiceImpl implements JobPostingService{
 	@Override
 	public List<JobPosting> findByCityAndState(String city, String state) {
 		return jpRepo.findByAddress_cityAndAddress_state(city, state);
+	}
+
+	@Override
+	public JobPosting findById(int id) {
+		Optional<JobPosting> jpOpt = jpRepo.findById(id);
+		JobPosting jp = null;
+		if(jpOpt.isPresent()) {
+			jp = jpOpt.get();
+		}
+		return jp;
 	}
 	
 	
