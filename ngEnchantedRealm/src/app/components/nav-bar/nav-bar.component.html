@@ -1,0 +1,82 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="https://library.livecanvas.com/sections/">
+      <!-- How to include local images in Angular -->
+      <!-- <img
+        src=""
+        width="30"
+        height="30"
+        class="d-inline-block align-top"
+        alt=""
+      /> -->
+      <span editable="inline">Enchanted Realm</span>
+    </a>
+    <!-- Hamburger Icon -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#myNavbar1"
+      aria-controls="myNavbar1"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- /Hamburger Icon -->
+
+    <div class="collapse navbar-collapse" id="myNavbar1">
+      <div lc-helper="shortcode" class="live-shortcode me-auto">
+        <!--  nav_menu -->
+        <ul id="menu-menu-1" class="navbar-nav">
+          <li
+            class="menu-item menu-item-type-custom menu-item-object-custom nav-item nav-item-32739"
+          >
+            <button class="nav-link">View All Jobs</button>
+          </li>
+          <li
+            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home nav-item nav-item-32738"
+          >
+            <button class="nav-link">Login/Register</button>
+          </li>
+          <li
+            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home nav-item nav-item-32738"
+          >
+            <button class="nav-link">About</button>
+          </li>
+          <li
+            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home nav-item nav-item-32738"
+          >
+            <button class="nav-link">Other Stuff</button>
+          </li>
+        </ul>
+        <!-- /lc_nav_menu -->
+      </div>
+
+      <!-- Search Form -->
+      <div class="lc-block">
+        <form method="get" id="searchform" role="search" action="/">
+          <label class="visually-hidden" for="s"> Search </label>
+          <div class="input-group">
+            <input
+              class="field form-control"
+              id="s"
+              name="s"
+              type="text"
+              placeholder="Search..."
+              value=""
+            />
+            <input
+              class="submit btn btn-primary"
+              id="searchsubmit"
+              name="submit"
+              type="submit"
+              value="Search"
+            />
+          </div>
+        </form>
+      </div>
+      <!-- / Search Form -->
+    </div>
+  </div>
+</nav>
