@@ -5,6 +5,9 @@ import { AuthService } from './services/auth.service';
 import { JobPostingComponent } from './components/job-posting/job-posting.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LogInComponent } from './components/log-in/log-in.component';
+import { AboutComponent } from './components/about/about.component';
+import { JobDetailComponent } from './components/job-detail/job-detail.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +18,9 @@ import { LogInComponent } from './components/log-in/log-in.component';
     RegisterComponent,
     LogInComponent,
     TestimonialComponent,
+    AboutComponent,
+    JobDetailComponent,
+    NavBarComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
