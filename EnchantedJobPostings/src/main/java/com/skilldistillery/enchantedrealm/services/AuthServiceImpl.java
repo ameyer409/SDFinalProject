@@ -19,10 +19,10 @@ public class AuthServiceImpl implements AuthService {
 	public User register(User user) {
 		// Data validation/sanity checking checking
 		//methods in the user entity
-//		String encrypted = encoder.encode(user.getPassword());
-//		user.setPassword(encrypted);
-//		user.setEnabled(true);
-//		user.setRole("standard");
+		String encrypted = encoder.encode(user.getPassword());
+		user.setPassword(encrypted);
+		user.setEnabled(true);
+		user.setRole(user.getRole());
 		userRepo.saveAndFlush(user); // <==save to db
 		return user; // <=== return User
 	}
