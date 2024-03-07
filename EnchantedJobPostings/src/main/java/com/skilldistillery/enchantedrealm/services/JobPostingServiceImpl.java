@@ -18,5 +18,21 @@ public class JobPostingServiceImpl implements JobPostingService{
 	public List<JobPosting> index() {
 		return jpRepo.findAll();
 	}
+
+	@Override
+	public List<JobPosting> findByCompany(String name) {
+		return jpRepo.findByCompany_name(name);
+	}
+
+	@Override
+	public List<JobPosting> findBySalary(int low, int high) {
+		return jpRepo.findByMinimumSalaryGreaterThanEqualAndMaximumSalaryLessThanEqual(low, high);
+	}
+
+	@Override
+	public List<JobPosting> findByIndustry(String name) {
+		return jpRepo.findByIndustry_name(name);
+	}
+	
 	
 }

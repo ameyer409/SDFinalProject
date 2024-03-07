@@ -1,12 +1,11 @@
 package com.skilldistillery.enchantedrealm.controllers;
 
-import java.security.Principal;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,6 +28,18 @@ public class JobPostingController {
 		return jpService.index();
 	}
 	
+	@GetMapping("jobpostings/{name}")
+	public List<JobPosting> findByCompanyName(@PathVariable("name") String name, HttpServletRequest req, HttpServletResponse res) {
+		return jpService.findByCompany(name);
+	}
 	
+	@GetMapping("jobpostings/{low}/{high}")
+	public List<JobPosting> findBySalaryRange(@PathVariable("low") int low, @PathVariable("high") int high, HttpServletRequest req, HttpServletResponse res) {
+		return jpService.findBySalary(low, high);
+	}
 	
+	@GetMapping("jobpostings/industry/{name}")
+	public List<JobPosting> findByIndustry(@PathVariable("name") String name, HttpServletRequest req, HttpServletResponse res) {
+		return jpService.findByIndustry(name);
+	}
 }
