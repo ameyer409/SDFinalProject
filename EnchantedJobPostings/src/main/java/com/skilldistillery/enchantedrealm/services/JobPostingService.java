@@ -13,4 +13,12 @@ public interface JobPostingService {
 	public List<JobPosting> findBySalary(int low, int high);
 	
 	public List<JobPosting> findByIndustry(String name);
+	
+	public List<JobPosting> findByCity(String city);
+	
+	public List<JobPosting> findByState(String state);
+	
+	public List<JobPosting> findByZipCode(String zip);
+	
+	public List<JobPosting> findByCityAndState(String city, String state);
 }

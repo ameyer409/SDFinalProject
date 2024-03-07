@@ -42,4 +42,29 @@ public class JobPostingController {
 	public List<JobPosting> findByIndustry(@PathVariable("name") String name, HttpServletRequest req, HttpServletResponse res) {
 		return jpService.findByIndustry(name);
 	}
+	
+	@GetMapping("jobpostings/location/city/{city}")
+	public List<JobPosting> findByCity(@PathVariable("city") String name, HttpServletRequest req, HttpServletResponse res) {
+		return jpService.findByCity(name);
+	}
+	
+	
+	@GetMapping("jobpostings/location/state/{state}")
+	public List<JobPosting> findByState(@PathVariable("state") String name, HttpServletRequest req, HttpServletResponse res) {
+		return jpService.findByState(name);
+	}
+	
+	
+	@GetMapping("jobpostings/location/zipcode/{zip}")
+	public List<JobPosting> findByZipcode(@PathVariable("zip") String zip, HttpServletRequest req, HttpServletResponse res) {
+		return jpService.findByZipCode(zip);
+	}
+	
+	
+	@GetMapping("jobpostings/location/{city}/{state}")
+	public List<JobPosting> findBycity(@PathVariable("city") String city, @PathVariable("state") String state, HttpServletRequest req, HttpServletResponse res) {
+		return jpService.findByCityAndState(city, state);
+	}
+	
+	
 }
