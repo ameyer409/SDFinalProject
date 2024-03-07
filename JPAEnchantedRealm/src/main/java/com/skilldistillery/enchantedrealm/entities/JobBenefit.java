@@ -44,7 +44,8 @@ public class JobBenefit {
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	
+	@JsonIgnore
 	public List<JobPosting> getJobPostings() {
 		return postings;
 	}

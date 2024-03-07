@@ -34,7 +34,7 @@ ext {
 
 // define project specific dependencies
 dependencies {
-  implementation group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.15.3'
+  implementation group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.16.1'
 
   implementation "mysql:mysql-connector-java:$mySqlConnectorVersion"
   implementation "org.apache.logging.log4j:log4j-core:$log4jVersion"
