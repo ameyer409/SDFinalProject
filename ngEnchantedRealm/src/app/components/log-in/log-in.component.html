@@ -9,22 +9,26 @@
               <h3 class="login-heading mb-4">Welcome to Enchanted Realm!</h3>
 
               <!-- Sign In Form -->
-              <form>
+              <form (submit)="login(currentUser)">
                 <div class="form-floating mb-3">
                   <input
-                    type="email"
+                    type="text"
                     class="form-control"
                     id="floatingInput"
-                    placeholder="name@example.com"
+                    name="username"
+                    placeholder="username"
+                    [(ngModel)]="currentUser.username"
                   />
-                  <label for="floatingInput">Email address</label>
+                  <label for="floatingInput">Username</label>
                 </div>
                 <div class="form-floating mb-3">
                   <input
                     type="password"
                     class="form-control"
                     id="floatingPassword"
+                    name="password"
                     placeholder="Password"
+                    [(ngModel)]="currentUser.password"
                   />
                   <label for="floatingPassword">Password</label>
                 </div>
