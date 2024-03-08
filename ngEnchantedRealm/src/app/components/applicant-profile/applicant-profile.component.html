@@ -1,0 +1,573 @@
+<section class="bg-light py-3 py-md-5 py-xl-8">
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col-12 col-md-10 col-lg-8 col-xl-7 col-xxl-6">
+        <h2 class="mb-4 display-5 text-center">Profile</h2>
+        <p class="text-secondary text-center lead fs-4 mb-5">
+          Welcome to your personal profile. You can view/edit your profile and
+          change/edit your user name and password here.
+        </p>
+        <hr class="w-50 mx-auto mb-5 mb-xl-9 border-dark-subtle" />
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row gy-4 gy-lg-0">
+      <div class="col-12 col-lg-4 col-xl-3">
+        <div class="row gy-4">
+          <div class="col-12">
+            <div class="card widget-card border-light shadow-sm">
+              <div class="card-header text-bg-warning">Welcome, UserName</div>
+              <div class="card-body">
+                <div class="text-center mb-3">
+                  <img
+                    src="https://a.storyblok.com/f/191576/1200x800/215e59568f/round_profil_picture_after_.webp"
+                    class="img-fluid rounded-circle"
+                    width="90%"
+                    style="border-radius: 50%"
+                    alt=""
+                  />
+                </div>
+                <h5 class="text-center mb-1">User Name</h5>
+                <p class="text-center text-secondary mb-4">Java Developer</p>
+                <ul class="list-group list-group-flush mb-4">
+                  <li
+                    class="list-group-item d-flex justify-content-between align-items-center"
+                  >
+                    <h6 class="m-0">Jobs Applied</h6>
+                    <span>50</span>
+                  </li>
+                </ul>
+                <div class="d-grid m-1">
+                  <button class="btn btn-outline-warning" type="button">
+                    Edit Profile
+                  </button>
+                </div>
+                <div class="d-grid m-1">
+                  <button class="btn btn-outline-warning" type="button">
+                    Edit Username / Password
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="card widget-card border-light shadow-sm">
+              <div class="card-header text-bg-warning">Highlight Me</div>
+              <div class="card-body">
+                <ul class="list-group list-group-flush mb-0">
+                  <li class="list-group-item">
+                    <h6 class="mb-1">
+                      <span class="bii bi-mortarboard-fill me-2"
+                        >Education</span
+                      >
+                    </h6>
+                    <span>M.S Computer Science</span>
+                  </li>
+                  <li class="list-group-item">
+                    <h6 class="mb-1">
+                      <span class="bii bi-geo-alt-fill me-2">Location</span>
+                    </h6>
+                    <span>Mountain View, California</span>
+                  </li>
+                  <li class="list-group-item">
+                    <h6 class="mb-1">
+                      <span class="bii bi-building-fill-gear me-2"
+                        >Company</span
+                      >
+                    </h6>
+                    <span>GitHub Inc</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-lg-8 col-xl-9">
+        <div class="card widget-card border-light shadow-sm">
+          <div class="card-body p-4">
+            <!-- Edit Username and Password -->
+            <div id="edit-username-password">
+              <h5 class="mb-3">Edit Username / Password</h5>
+
+              <div class="row gy-3 gy-xxl-4">
+                <div class="col-12 col-md-6">
+                  <label for="inputUserName" class="form-label"
+                    >User Name</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputUserName"
+                    value="User name"
+                  />
+                </div>
+                <div class="col-12 col-md-6">
+                  <label for="inputPassword" class="form-label">Password</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="inputPassword"
+                    value="PW"
+                  />
+                </div>
+
+                <div class="col-12">
+                  <button type="submit" class="btn btn-warning">
+                    Save Changes
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- / Edit Username and Password -->
+          </div>
+        </div>
+        <div class="card widget-card border-light shadow-sm">
+          <div class="card-body p-4">
+            <!-- Profile Section -->
+            <div id="profile-section">
+              <h5 class="mb-3">About</h5>
+              <p class="lead mb-3">
+                I am a seasoned and results-driven Project Manager who brings
+                experience and expertise to project management. With a proven
+                track record of successfully delivering complex projects on time
+                and within budget, I am the go-to professional for organizations
+                seeking efficient and effective project leadership.
+              </p>
+              <h5 class="mb-3">Profile</h5>
+              <div class="row g-0">
+                <div
+                  class="col-5 col-md-3 bg-light border-bottom border-white border-3"
+                >
+                  <div class="p-2">First Name</div>
+                </div>
+                <div
+                  class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3"
+                >
+                  <div class="p-2">FN</div>
+                </div>
+                <div
+                  class="col-5 col-md-3 bg-light border-bottom border-white border-3"
+                >
+                  <div class="p-2">Last Name</div>
+                </div>
+                <div
+                  class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3"
+                >
+                  <div class="p-2">LN</div>
+                </div>
+                <div
+                  class="col-5 col-md-3 bg-light border-bottom border-white border-3"
+                >
+                  <div class="p-2">Education</div>
+                </div>
+                <div
+                  class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3"
+                >
+                  <div class="p-2">M.S Computer Science</div>
+                </div>
+                <div
+                  class="col-5 col-md-3 bg-light border-bottom border-white border-3"
+                >
+                  <div class="p-2">Address</div>
+                </div>
+                <div
+                  class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3"
+                >
+                  <div class="p-2">Mountain View, California</div>
+                </div>
+                <div
+                  class="col-5 col-md-3 bg-light border-bottom border-white border-3"
+                >
+                  <div class="p-2">Country</div>
+                </div>
+                <div
+                  class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3"
+                >
+                  <div class="p-2">United States</div>
+                </div>
+                <div
+                  class="col-5 col-md-3 bg-light border-bottom border-white border-3"
+                >
+                  <div class="p-2">Job</div>
+                </div>
+                <div
+                  class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3"
+                >
+                  <div class="p-2">Project Manager</div>
+                </div>
+                <div
+                  class="col-5 col-md-3 bg-light border-bottom border-white border-3"
+                >
+                  <div class="p-2">Company</div>
+                </div>
+                <div
+                  class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3"
+                >
+                  <div class="p-2">GitHub Inc</div>
+                </div>
+                <div
+                  class="col-5 col-md-3 bg-light border-bottom border-white border-3"
+                >
+                  <div class="p-2">Phone</div>
+                </div>
+                <div
+                  class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3"
+                >
+                  <div class="p-2">+1 (248) 679-8745</div>
+                </div>
+                <div
+                  class="col-5 col-md-3 bg-light border-bottom border-white border-3"
+                >
+                  <div class="p-2">Email</div>
+                </div>
+                <div
+                  class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3"
+                >
+                  <div class="p-2">some example emails</div>
+                </div>
+              </div>
+            </div>
+            <!-- Profile Section -->
+
+            <!-- Edit Profile -->
+            <div id="edit-profile">
+              <h5 class="mb-3">Edit profile</h5>
+
+              <div class="row gy-3 gy-xxl-4">
+                <div class="col-12 col-md-6">
+                  <label for="inputFirstName" class="form-label"
+                    >First Name</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputFirstName"
+                    value="FN"
+                  />
+                </div>
+                <div class="col-12 col-md-6">
+                  <label for="inputLastName" class="form-label"
+                    >Last Name</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputLastName"
+                    value="LN"
+                  />
+                </div>
+                <div class="col-12 col-md-6">
+                  <label for="inputEducation" class="form-label"
+                    >Education</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputEducation"
+                    value="M.S Computer Science"
+                  />
+                </div>
+                <div class="col-12 col-md-6">
+                  <label for="inputSkills" class="form-label">Skills</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputSkills"
+                    value="HTML, SCSS, Javascript, React, Vue, Angular, UI, UX"
+                  />
+                </div>
+                <div class="col-12 col-md-6">
+                  <label for="inputJob" class="form-label">Job</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputJob"
+                    value="Project Manager"
+                  />
+                </div>
+                <div class="col-12 col-md-6">
+                  <label for="inputCompany" class="form-label">Company</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputCompany"
+                    value="GitHub Inc"
+                  />
+                </div>
+                <div class="col-12 col-md-6">
+                  <label for="inputPhone" class="form-label">Phone</label>
+                  <input
+                    type="tel"
+                    class="form-control"
+                    id="inputPhone"
+                    value="+12486798745"
+                  />
+                </div>
+                <div class="col-12 col-md-6">
+                  <label for="inputEmail" class="form-label">Email</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="inputEmail"
+                    value="some example emails"
+                  />
+                </div>
+                <div class="col-12 col-md-6">
+                  <label for="inputAddress" class="form-label">Address</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputAddress"
+                    value="Mountain View, California"
+                  />
+                </div>
+                <div class="col-12 col-md-6">
+                  <label for="inputCountry" class="form-label">Country</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputCountry"
+                    value="United States"
+                  />
+                </div>
+
+                <div class="col-12">
+                  <label for="inputAbout" class="form-label">About</label>
+                  <textarea class="form-control" id="inputAbout">
+I am a seasoned and results-driven Project Manager who brings experience and expertise to project management. With a proven track record of successfully delivering complex projects on time and within budget, I am the go-to professional for organizations seeking efficient and effective project leadership.</textarea
+                  >
+                </div>
+                <div class="col-12">
+                  <label for="inputProfilePictureUrl" class="form-label"
+                    >Profile Pricture URL</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputProfilePictureUrl"
+                    value="Some URL"
+                  />
+                </div>
+                <div class="col-12">
+                  <button type="submit" class="btn btn-warning">
+                    Save Changes
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- / Edit profile -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col-12 col-md-10 col-lg-8 col-xl-7 col-xxl-6">
+        <h5 class="mb-4 display-5 text-center m-4">Jobs Applied</h5>
+        <p class="text-secondary text-center lead fs-4 mb-5">
+          You can review all job positions you have applied here.
+        </p>
+        <hr class="w-50 mx-auto mb-5 mb-xl-9 border-dark-subtle" />
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row m-4">
+      <!-- Job card -->
+      <div class="col-lg-4 col-md-6 col-sm-6">
+        <div class="category mb-30">
+          <div class="job">
+            <a href=""
+              ><span class="colors1 mb-4">User Experience Designer</span></a
+            >
+            <ul class="place">
+              <li>
+                <p><i class="fas fa-map-marker-alt pe-2"></i> New York, USA</p>
+              </li>
+              <li>
+                <p class="ps-5">
+                  <i class="fas fa-map-marker-alt pe-2"></i>Full Time
+                </p>
+              </li>
+            </ul>
+            <div class="d-flex align-items-center justify-content-between m-2">
+              <div class="left">
+                <p>Globe Solution Ltd.</p>
+              </div>
+              <div class="badge bg-success">$90K - $180K</div>
+            </div>
+            <div class="d-flex align-items-center justify-content-between m-2">
+              <div>
+                <div class="badge bg-secondary m-1">GOLANG</div>
+                <div class="badge bg-secondary m-1">SENIOR</div>
+                <div class="badge bg-secondary m-1">ENGINEER</div>
+                <div class="badge bg-secondary m-1">BACKEND</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- / Job card -->
+
+      <!-- Job card -->
+      <div class="col-lg-4 col-md-6 col-sm-6">
+        <div class="category mb-30">
+          <div class="job">
+            <a href=""
+              ><span class="colors2 mb-4"
+                >Foreign Language Research Analyst</span
+              ></a
+            >
+            <ul class="place">
+              <li>
+                <p><i class="fas fa-map-marker-alt pe-2"></i> New York, USA</p>
+              </li>
+              <li>
+                <p class="ps-5">
+                  <i class="fas fa-map-marker-alt pe-2"></i>Full Time
+                </p>
+              </li>
+            </ul>
+            <div class="d-flex align-items-center justify-content-between m-2">
+              <div class="left">
+                <p>Globe Solution Ltd.</p>
+              </div>
+              <div class="badge bg-success">$90K - $180K</div>
+            </div>
+            <div class="d-flex align-items-center justify-content-between m-2">
+              <div>
+                <div class="badge bg-secondary m-1">GOLANG</div>
+                <div class="badge bg-secondary m-1">SENIOR</div>
+                <div class="badge bg-secondary m-1">ENGINEER</div>
+                <div class="badge bg-secondary m-1">BACKEND</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- / Job card -->
+
+      <!-- Job card -->
+      <div class="col-lg-4 col-md-6 col-sm-6">
+        <div class="category mb-30">
+          <div class="job">
+            <a href=""><span class="colors3 mb-4">Medical Assistant</span></a>
+            <ul class="place">
+              <li>
+                <p><i class="fas fa-map-marker-alt pe-2"></i> New York, USA</p>
+              </li>
+              <li>
+                <p class="ps-5">
+                  <i class="fas fa-map-marker-alt pe-2"></i>Full Time
+                </p>
+              </li>
+            </ul>
+            <div class="d-flex align-items-center justify-content-between m-2">
+              <div class="left">
+                <p>Globe Solution Ltd.</p>
+              </div>
+              <div class="badge bg-success">$90K - $180K</div>
+            </div>
+            <div class="d-flex align-items-center justify-content-between m-2">
+              <div>
+                <div class="badge bg-secondary m-1">GOLANG</div>
+                <div class="badge bg-secondary m-1">SENIOR</div>
+                <div class="badge bg-secondary m-1">ENGINEER</div>
+                <div class="badge bg-secondary m-1">BACKEND</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- / Job card -->
+
+      <!-- Job card -->
+      <div class="col-lg-4 col-md-6 col-sm-6">
+        <div class="category mb-30">
+          <div class="job">
+            <a href=""
+              ><span class="colors4 mb-4">User Experience Designer</span></a
+            >
+            <ul class="place">
+              <li>
+                <p><i class="fas fa-map-marker-alt pe-2"></i> New York, USA</p>
+              </li>
+              <li>
+                <p class="ps-5">
+                  <i class="fas fa-map-marker-alt pe-2"></i>Full Time
+                </p>
+              </li>
+            </ul>
+            <div class="d-flex align-items-center justify-content-between m-2">
+              <div class="left">
+                <p>Globe Solution Ltd.</p>
+              </div>
+              <div class="badge bg-success">$90K - $180K</div>
+            </div>
+            <div class="d-flex align-items-center justify-content-between m-2">
+              <div>
+                <div class="badge bg-secondary m-1">GOLANG</div>
+                <div class="badge bg-secondary m-1">SENIOR</div>
+                <div class="badge bg-secondary m-1">ENGINEER</div>
+                <div class="badge bg-secondary m-1">BACKEND</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- / Job card -->
+
+      <!-- Job card -->
+      <div class="col-lg-4 col-md-6 col-sm-6">
+        <div class="category mb-30">
+          <div class="job">
+            <a href=""
+              ><span class="colors5 mb-4"
+                >Foreign Language Research Analyst</span
+              ></a
+            >
+            <ul class="place">
+              <li>
+                <p><i class="fas fa-map-marker-alt pe-2"></i> New York, USA</p>
+              </li>
+              <li>
+                <p class="ps-5">
+                  <i class="fas fa-map-marker-alt pe-2"></i>Full Time
+                </p>
+              </li>
+            </ul>
+            <div class="d-flex align-items-center justify-content-between m-2">
+              <div class="left">
+                <p>Globe Solution Ltd.</p>
+              </div>
+              <div class="badge bg-success">$90K - $180K</div>
+            </div>
+            <div class="d-flex align-items-center justify-content-between m-2">
+              <div>
+                <div class="badge bg-secondary m-1">GOLANG</div>
+                <div class="badge bg-secondary m-1">SENIOR</div>
+                <div class="badge bg-secondary m-1">ENGINEER</div>
+                <div class="badge bg-secondary m-1">BACKEND</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- / Job card -->
+
+      <!-- <div class="col-12 d-flex align-items-center justify-content-center">
+          <div class="btn btn-primary mb-30">
+            <span>Show More</span>
+            <span class="fas fa-arrow-right"></span>
+          </div>
+        </div> -->
+    </div>
+  </div>
+</section>
