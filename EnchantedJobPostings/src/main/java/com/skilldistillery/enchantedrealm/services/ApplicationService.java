@@ -15,4 +15,8 @@ public interface ApplicationService  {
 	Application findById(String name, int id);
 
 	Application create(Application application, int id, String name);
+
+	Application update(Application application, String name, int id);
+
+	boolean deleteApplication(String name, int id);
 }

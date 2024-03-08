@@ -85,4 +85,27 @@ public class ApplicationServiceImpl implements ApplicationService {
 		return null;
 	}
 
+	@Override
+	public Application update(Application application, String name, int id) {
+		Application app = null;
+		User user = userRepo.findByUsername(name);
+		if(user != null) {
+			app = appRepo.findByIdAndApplicant_User_username(id, name);
+			app.setNotes(application.getNotes());
+			return appRepo.saveAndFlush(app);
+		}
+		return app;
+	}
+
+	@Override
+	public boolean deleteApplication(String name, int id) {
+		User user = userRepo.findByUsername(name);
+		boolean result = appRepo.existsById(id);
+		if(user != null && result) {
+			appRepo.deleteById(id);
+			return true;
+		}
+		return false;
+	}
+
 }
