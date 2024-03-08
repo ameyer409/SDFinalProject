@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-job-posting',
@@ -8,4 +8,13 @@ import { RouterLink } from '@angular/router';
   templateUrl: './job-posting.component.html',
   styleUrl: './job-posting.component.css',
 })
-export class JobPostingComponent {}
+export class JobPostingComponent {
+  constructor(private router: Router) {}
+  public moveToJobDetail() {
+    this.router.navigateByUrl('jobDetail');
+  }
+
+  public moveToProfile() {
+    this.router.navigateByUrl('applicantProfile');
+  }
+}

@@ -1,3 +1,4 @@
+import { JobDetailCompanyViewComponent } from './components/job-detail-company-view/job-detail-company-view.component';
 import { Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
@@ -8,7 +9,7 @@ import { TestimonialComponent } from './components/testimonial/testimonial.compo
 import { LogInComponent } from './components/log-in/log-in.component';
 import { RegisterComponent } from './components/register/register.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { JobDetailComponent } from './components/job-detail/job-detail.component';
+import { JobDetailApplicantViewComponent } from './components/job-detail-applicant-view/job-detail-applicant-view.component';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -20,6 +21,13 @@ export const routes: Routes = [
   { path: 'testimonial', component: TestimonialComponent },
   { path: 'logIn', component: LogInComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'jobDetail', component: JobDetailComponent },
+  {
+    path: 'jobDetailApplicantView',
+    component: JobDetailApplicantViewComponent,
+  },
+  {
+    path: 'jobDetailCompanyView',
+    component: JobDetailCompanyViewComponent,
+  },
   { path: '**', component: NotFoundComponent }, //page not found route
 ];
