@@ -9,6 +9,9 @@ import { AboutComponent } from './components/about/about.component';
 import { JobDetailComponent } from './components/job-detail/job-detail.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
+import { ApplicantProfileComponent } from './components/applicant-profile/applicant-profile.component';
+import { CompanyProfileComponent } from './components/company-profile/company-profile.component';
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -21,6 +24,8 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
     AboutComponent,
     JobDetailComponent,
     NavBarComponent,
+    ApplicantProfileComponent,
+    CompanyProfileComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
