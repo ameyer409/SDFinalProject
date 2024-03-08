@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-job-posting',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './job-posting.component.html',
-  styleUrl: './job-posting.component.css'
+  styleUrl: './job-posting.component.css',
 })
-export class JobPostingComponent {
-
-}
+export class JobPostingComponent {}

@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
-    <a class="navbar-brand" href="https://library.livecanvas.com/sections/">
-      <!-- How to include local images in Angular -->
+    <a class="navbar-brand" [routerLink]="['/home']">
+      <!-- How to include local images in Angular??? -->
       <!-- <img
         src=""
         width="30"
@@ -32,12 +32,14 @@
           <li
             class="menu-item menu-item-type-custom menu-item-object-custom nav-item nav-item-32739"
           >
-            <button class="nav-link">View All Jobs</button>
+            <a class="nav-link" [routerLink]="['/viewAllJobs']">
+              View All Jobs
+            </a>
           </li>
           <li
             class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home nav-item nav-item-32738"
           >
-            <button class="nav-link">Login/Register</button>
+            <a class="nav-link" [routerLink]="['/logIn']">Login/Register</a>
           </li>
           <li
             class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home nav-item nav-item-32738"
@@ -47,12 +49,30 @@
           <li
             class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home nav-item nav-item-32738"
           >
-            <button class="nav-link">Other Stuff</button>
+            <a class="nav-link" [routerLink]="['/applicantProfile']"
+              >Applicant profile</a
+            >
           </li>
           <li
             class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home nav-item nav-item-32738"
           >
-            <button class="nav-link">Profile</button>
+            <a class="nav-link" [routerLink]="['/companyProfile']">
+              Company Profile
+            </a>
+          </li>
+
+          <li
+            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home nav-item nav-item-32738"
+          >
+            <a class="nav-link" [routerLink]="['/about']"> About </a>
+          </li>
+
+          <li
+            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home nav-item nav-item-32738"
+          >
+            <a class="nav-link" [routerLink]="['/testimonial']">
+              Testimonial
+            </a>
           </li>
         </ul>
         <!-- /lc_nav_menu -->

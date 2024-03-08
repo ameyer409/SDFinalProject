@@ -180,14 +180,6 @@ public class JobPosting {
 		this.apps = apps;
 	}
 
-	public List<JobBenefit> getJobBenefits() {
-		return benefits;
-	}
-
-	public void setJobBenefits(List<JobBenefit> jobBenefits) {
-		this.benefits = jobBenefits;
-	}
-	
 	public List<JobBenefit> getBenefits() {
 		return benefits;
 	}
