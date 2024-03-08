@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { User } from './../../models/user';
+import { Component, OnInit } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -10,4 +12,49 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './nav-bar.component.html',
   styleUrl: './nav-bar.component.css',
 })
-export class NavBarComponent {}
+export class NavBarComponent implements OnInit{
+
+  user: User = new User();
+  constructor(private auth: AuthService, private router: Router){}
+
+  ngOnInit(): void {
+    if(this.isLoggedIn()){
+      this.auth.getLoggedInUser().subscribe({
+        next: (result) => {
+          this.user = result;
+        },
+        error: (err) => {
+
+          console.log(err);
+        }
+      });
+    }
+  }
+
+  isApplicant() {
+    if(this.isLoggedIn()){
+      console.log(this.user.role);
+      if (this.user.role === 'Applicant') {
+        return true;
+      }
+      else {
+        return false;
+      }
+    }
+    else {
+      return false;
+    }
+  }
+
+  isLoggedIn() {
+    return this.auth.checkLogin();
+  }
+
+
+  logout() {
+    console.log('logout');
+    this.auth.logout();
+    this.user = new User();
+    this.router.navigateByUrl('home');
+  }
+}
