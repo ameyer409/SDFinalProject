@@ -7,20 +7,22 @@
         </div>
         <div class="card-body p-4 p-sm-5">
           <h5 class="card-title text-center mb-5 fw-light fs-5">Register</h5>
-          <form>
+          <form (submit)="register(newUser)">
             <div class="form-floating mb-3">
               <input
                 type="text"
                 class="form-control"
                 id="floatingInputUsername"
+                name="username"
                 placeholder="myusername"
                 required
                 autofocus
+                [(ngModel)]="newUser.username"
               />
               <label for="floatingInputUsername">Username</label>
             </div>
 
-            <div class="form-floating mb-3">
+            <!-- <div class="form-floating mb-3">
               <input
                 type="email"
                 class="form-control"
@@ -28,7 +30,7 @@
                 placeholder="name@example.com"
               />
               <label for="floatingInputEmail">Email address</label>
-            </div>
+            </div> -->
 
             <hr />
 
@@ -37,7 +39,9 @@
                 type="password"
                 class="form-control"
                 id="floatingPassword"
+                name="password"
                 placeholder="Password"
+                [(ngModel)]="newUser.password"
               />
               <label for="floatingPassword">Password</label>
             </div>
@@ -47,9 +51,76 @@
                 type="password"
                 class="form-control"
                 id="floatingPasswordConfirm"
+                name="confirmPassword"
                 placeholder="Confirm Password"
+                [(ngModel)]="confirmPassword"
               />
               <label for="floatingPasswordConfirm">Confirm Password</label>
+            </div>
+
+            <div class="form-check-inline mb-3">
+              <input
+                type="radio"
+                class="form-check-input"
+                id="role1"
+                name="role"
+                value="Applicant"
+                [(ngModel)]="newUser.role"
+              />
+              <label class="form-check-label" for="role1">Applicant</label>
+            </div>
+            <div class="form-check-inline mb-3">
+              <input
+                type="radio"
+                class="form-check-input"
+                id="role2"
+                name="role"
+                value="Company"
+                [(ngModel)]="newUser.role"
+              />
+              <label class="form-check-label" for="role2">Company</label>
+            </div>
+
+            <div *ngIf="newUser.role=='Applicant'" class="form-floating mb-3">
+              <input
+                type="text"
+                class="form-control"
+                id="floatingInputFirstName"
+                name="firstName"
+                placeholder="firstname"
+                required
+                autofocus
+                [(ngModel)]="newApplicant.firstName"
+              />
+              <label for="floatingInputUsername">First Name</label>
+            </div>
+
+            <div *ngIf="newUser.role=='Applicant'" class="form-floating mb-3">
+              <input
+                type="text"
+                class="form-control"
+                id="floatingInputLastName"
+                name="lastname"
+                placeholder="myusername"
+                required
+                autofocus
+                [(ngModel)]="newApplicant.lastName"
+              />
+              <label for="floatingInputUsername">Last Name</label>
+            </div>
+
+            <div *ngIf="newUser.role=='Company'" class="form-floating mb-3">
+              <input
+                type="text"
+                class="form-control"
+                id="floatingInputName"
+                name="companyName"
+                placeholder="myusername"
+                required
+                autofocus
+                [(ngModel)]="newCompany.name"
+              />
+              <label for="floatingInputUsername">Company Name</label>
             </div>
 
             <div class="d-grid mb-2">

@@ -36,7 +36,7 @@ export class AppComponent {
   constructor(private auth: AuthService) {}
 
   ngOnInit() {
-    this.tempTestDeleteMeLater(); // DELETE LATER!!!
+    // this.tempTestDeleteMeLater(); // DELETE LATER!!!
   }
 
   tempTestDeleteMeLater() {
