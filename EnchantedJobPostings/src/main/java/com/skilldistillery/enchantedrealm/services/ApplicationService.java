@@ -2,7 +2,6 @@ package com.skilldistillery.enchantedrealm.services;
 
 import java.util.List;
 
-import com.skilldistillery.enchantedrealm.entities.Applicant;
 import com.skilldistillery.enchantedrealm.entities.Application;
 import com.skilldistillery.enchantedrealm.entities.Company;
 
