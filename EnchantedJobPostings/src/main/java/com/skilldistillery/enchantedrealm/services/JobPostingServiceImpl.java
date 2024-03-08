@@ -69,6 +69,11 @@ public class JobPostingServiceImpl implements JobPostingService{
 		}
 		return jp;
 	}
+
+	@Override
+	public List<JobPosting> findByCompanyId(int id) {
+		return jpRepo.findByCompany_id(id);
+	}
 	
 	
 }
