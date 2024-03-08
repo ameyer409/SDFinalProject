@@ -45,13 +45,13 @@
                   </li>
                 </ul>
                 <div class="d-grid m-0">
-                  <button class="btn btn-outline-primary m-1" type="button">
-                    All Jobs Posted by Microsoft
+                  <button class="btn btn-outline-info m-1" type="button">
+                    Edit this job posting
                   </button>
                 </div>
                 <div class="d-grid m-0">
-                  <button class="btn btn-outline-primary m-1" type="button">
-                    View Company Profile
+                  <button class="btn btn-outline-info m-1" type="button">
+                    Company Profile
                   </button>
                 </div>
               </div>
@@ -59,58 +59,28 @@
           </div>
 
           <div class="col-12">
-            <!-- If the user have not applied, display this -->
+            <!-- Number of Applicants -->
             <div class="card widget-card border-light shadow-sm">
-              <div class="card-header text-bg-primary">Application status</div>
+              <div class="card-header text-bg-info">Application status</div>
               <div class="card-body">
                 <ul class="list-group list-group-flush mb-0">
                   <li class="list-group-item">
                     <h6 class="mb-1">
                       <span class="bii bi-mortarboard-fill me-2">
-                        You have not yet applied for this job
+                        Number of applicants
                       </span>
                     </h6>
-                    <span></span>
-                  </li>
-                  <li class="list-group-item">
-                    <button
-                      class="btn btn-success"
-                      style="display: block; width: 100%"
-                    >
-                      Apply
-                    </button>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <!-- If the user have applied, display this -->
-            <div class="card widget-card border-light shadow-sm">
-              <div class="card-header text-bg-primary">Application status</div>
-              <div class="card-body">
-                <ul class="list-group list-group-flush mb-0">
-                  <li class="list-group-item">
-                    <h6 class="mb-1">
-                      <span class="bii bi-mortarboard-fill me-2">
-                        👍 Application sent
-                      </span>
-                    </h6>
-                    <span></span>
-                  </li>
-                  <li class="list-group-item">
-                    <button
-                      class="btn btn-warning"
-                      style="display: block; width: 100%"
-                    >
-                      Revoke
-                    </button>
+                    <span>50</span>
                   </li>
                 </ul>
               </div>
             </div>
 
             <div class="card widget-card border-light shadow-sm">
-              <button class="btn btn-info" style="display: block; width: 100%">
+              <button
+                class="btn btn-primary"
+                style="display: block; width: 100%"
+              >
                 🔙 Back
               </button>
             </div>
@@ -118,6 +88,7 @@
         </div>
       </div>
       <div class="col-12 col-lg-8 col-xl-9">
+        <!-- Job detail view -->
         <div class="card widget-card border-light shadow-sm">
           <div class="card-body p-4">
             <h5 class="mb-3">Description</h5>
@@ -153,6 +124,76 @@
             </p>
           </div>
         </div>
+        <!-- / Job detail view -->
+
+        <!-- Edit Job Details -->
+        <div class="card widget-card border-light shadow-sm">
+          <div class="card-body p-4">
+            <div id="new-job-posting">
+              <h5 class="mb-3">Edit Job Posting</h5>
+              <div class="row gy-3 gy-xxl-4">
+                <div class="col-12 col-md-6">
+                  <label for="inputFirstName" class="form-label"
+                    >Job title</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputFirstName"
+                    value="Some value"
+                  />
+                </div>
+                <div class="col-12 col-md-6">
+                  <label for="inputLastName" class="form-label"
+                    >Requirement</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputLastName"
+                    value="HTML, CSS, JavaScript, React ..."
+                  />
+                </div>
+                <div class="col-12 col-md-6">
+                  <label for="inputEducation" class="form-label"
+                    >Minimum salary</label
+                  >
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="inputEducation"
+                    value="100000"
+                  />
+                </div>
+                <div class="col-12 col-md-6">
+                  <label for="inputSkills" class="form-label"
+                    >Maximum salary</label
+                  >
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="inputSkills"
+                    value="170000"
+                  />
+                </div>
+
+                <div class="col-12">
+                  <label for="inputAbout" class="form-label">Description</label>
+                  <textarea class="form-control" id="inputAbout">
+What Is the Job Description for a Software Developer? Software developers design, program, build, deploy and maintain software using many different skills and tools. They also help build software systems that power networks and devices and ensure that those systems remain functional.</textarea
+                  >
+                </div>
+
+                <div class="col-12">
+                  <button type="submit" class="btn btn-success">
+                    Save changes
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- / Edit Job Details -->
       </div>
     </div>
   </div>
