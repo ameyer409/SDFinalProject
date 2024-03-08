@@ -1,6 +1,5 @@
 export class User {
   id: number;
-  // email: string;
   username: string;
   password: string;
   enabled: boolean;
@@ -8,14 +7,12 @@ export class User {
 
   constructor(
     id: number = 0,
-    // email: string = '',
     username: string = '',
     password: string = '',
     enabled: boolean = false,
     role: string = '',
   ){
     this.id = id;
-    // this.email = email;
     this.username = username;
     this.password = password;
     this.enabled = enabled;
