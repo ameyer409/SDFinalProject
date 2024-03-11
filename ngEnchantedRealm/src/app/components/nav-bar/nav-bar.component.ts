@@ -18,6 +18,11 @@ export class NavBarComponent implements OnInit{
   constructor(private auth: AuthService, private router: Router){}
 
   ngOnInit(): void {
+    console.log('ngIit')
+    this.getUser();
+  }
+
+  getUser() {
     if(this.isLoggedIn()){
       this.auth.getLoggedInUser().subscribe({
         next: (result) => {
@@ -33,17 +38,26 @@ export class NavBarComponent implements OnInit{
 
   isApplicant() {
     if(this.isLoggedIn()){
-      console.log(this.user.role);
+      if(this.user.role === ''){
+        this.getUser();
+      }
       if (this.user.role === 'Applicant') {
         return true;
       }
-      else {
-        return false;
+    }
+      return false;
+  }
+
+  isCompany() {
+    if(this.isLoggedIn()){
+      if(this.user.role === ''){
+        this.getUser();
+      }
+      if (this.user.role === 'Company') {
+        return true;
       }
     }
-    else {
       return false;
-    }
   }
 
   isLoggedIn() {
