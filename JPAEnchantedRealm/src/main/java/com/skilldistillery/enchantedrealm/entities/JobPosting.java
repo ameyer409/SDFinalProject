@@ -51,7 +51,6 @@ public class JobPosting {
 	@ManyToOne
 	@JoinColumn(name="industry_id")
 	private Industry industry;
-	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="company_id")
 	private Company company;

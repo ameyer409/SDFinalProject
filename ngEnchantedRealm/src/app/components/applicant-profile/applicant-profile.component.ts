@@ -5,6 +5,7 @@ import { Applicant } from '../../models/applicant';
 import { ApplicantService } from '../../services/applicant.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Application } from '../../models/application';
 
 @Component({
   selector: 'app-applicant-profile',
@@ -19,6 +20,7 @@ export class ApplicantProfileComponent implements OnInit {
   editUser: User | null = null;
   editApplicant: Applicant | null = null;
   confirmPassword: string = '';
+  applicaitons: Application[] = [];
 
   constructor(
     private auth: AuthService,
@@ -28,6 +30,15 @@ export class ApplicantProfileComponent implements OnInit {
   ngOnInit(): void {
     this.getUser();
     this.getApplicant();
+    this.test();
+
+  }
+
+  test(){
+    this.applicant.applications.forEach(element => {
+      console.log(element.jobPosting.company);
+      console.log('test')
+    });
   }
 
   getUser() {
