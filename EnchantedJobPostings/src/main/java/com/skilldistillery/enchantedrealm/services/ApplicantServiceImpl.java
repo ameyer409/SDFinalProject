@@ -83,4 +83,14 @@ public class ApplicantServiceImpl implements ApplicantService{
 		return false;
 	}
 
+	@Override
+	public Applicant findByUsername(String username) {
+		User user = userRepo.findByUsername(username);
+		if(user != null) {	
+			return appRepo.findByUser_username(username);
+		}
+		return null;
+	
+	}
+
 }

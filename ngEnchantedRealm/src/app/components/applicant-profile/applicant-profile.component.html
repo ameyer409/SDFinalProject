@@ -18,34 +18,35 @@
         <div class="row gy-4">
           <div class="col-12">
             <div class="card widget-card border-light shadow-sm">
-              <div class="card-header text-bg-warning">Welcome, UserName</div>
+              <div class="card-header text-bg-warning">Welcome, {{user.username}}</div>
               <div class="card-body">
                 <div class="text-center mb-3">
                   <img
-                    src="https://a.storyblok.com/f/191576/1200x800/215e59568f/round_profil_picture_after_.webp"
+                    src="{{applicant.profileImg}}"
+
                     class="img-fluid rounded-circle"
                     width="90%"
                     style="border-radius: 50%"
                     alt=""
                   />
                 </div>
-                <h5 class="text-center mb-1">User Name</h5>
+                <h5 class="text-center mb-1">{{user.username}}</h5>
                 <p class="text-center text-secondary mb-4">Java Developer</p>
                 <ul class="list-group list-group-flush mb-4">
                   <li
                     class="list-group-item d-flex justify-content-between align-items-center"
                   >
                     <h6 class="m-0">Jobs Applied</h6>
-                    <span>50</span>
+                    <span>{{applicant.applications}}</span>
                   </li>
                 </ul>
                 <div class="d-grid m-1">
-                  <button class="btn btn-outline-warning" type="button">
+                  <button (click)="editApplicantCredentials()" class="btn btn-outline-warning" type="button">
                     Edit Profile
                   </button>
                 </div>
                 <div class="d-grid m-1">
-                  <button class="btn btn-outline-warning" type="button">
+                  <button (click)="editUserCredentials()" class="btn btn-outline-warning" type="button">
                     Edit Username / Password
                   </button>
                 </div>
@@ -88,35 +89,37 @@
       </div>
       <div class="col-12 col-lg-8 col-xl-9">
         <div class="card widget-card border-light shadow-sm">
-          <div class="card-body p-4">
+          <div *ngIf="editUser != null" class="card-body p-4">
             <!-- Edit Username and Password -->
             <div id="edit-username-password">
-              <h5 class="mb-3">Edit Username / Password</h5>
+              <h5 class="mb-3">Update Password</h5>
 
               <div class="row gy-3 gy-xxl-4">
                 <div class="col-12 col-md-6">
-                  <label for="inputUserName" class="form-label"
-                    >User Name</label
+                  <label for="inputPassword" class="form-label"
+                    >Password</label
                   >
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="inputUserName"
-                    value="User name"
-                  />
-                </div>
-                <div class="col-12 col-md-6">
-                  <label for="inputPassword" class="form-label">Password</label>
                   <input
                     type="password"
                     class="form-control"
                     id="inputPassword"
-                    value="PW"
+                    [(ngModel)]="editUser.password"
+                    value=""
+                  />
+                </div>
+                <div class="col-12 col-md-6">
+                  <label for="confirmPassword" class="form-label">Confirm Password</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="confirmPassword"
+                    [(ngModel)]="confirmPassword"
+                    value=""
                   />
                 </div>
 
                 <div class="col-12">
-                  <button type="submit" class="btn btn-warning">
+                  <button (click)="editUserCredentials()" type="submit" class="btn btn-warning">
                     Save Changes
                   </button>
                 </div>
@@ -128,14 +131,15 @@
         <div class="card widget-card border-light shadow-sm">
           <div class="card-body p-4">
             <!-- Profile Section -->
-            <div id="profile-section">
+            <div *ngIf="editApplicant == null" id="profile-section">
               <h5 class="mb-3">About</h5>
               <p class="lead mb-3">
-                I am a seasoned and results-driven Project Manager who brings
+                {{applicant.aboutMe}}
+                <!-- I am a seasoned and results-driven Project Manager who brings
                 experience and expertise to project management. With a proven
                 track record of successfully delivering complex projects on time
                 and within budget, I am the go-to professional for organizations
-                seeking efficient and effective project leadership.
+                seeking efficient and effective project leadership. -->
               </p>
               <h5 class="mb-3">Profile</h5>
               <div class="row g-0">
@@ -147,7 +151,7 @@
                 <div
                   class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3"
                 >
-                  <div class="p-2">FN</div>
+                  <div class="p-2">{{applicant.firstName}}</div>
                 </div>
                 <div
                   class="col-5 col-md-3 bg-light border-bottom border-white border-3"
@@ -157,17 +161,17 @@
                 <div
                   class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3"
                 >
-                  <div class="p-2">LN</div>
+                  <div class="p-2">{{applicant.lastName}}</div>
                 </div>
                 <div
                   class="col-5 col-md-3 bg-light border-bottom border-white border-3"
                 >
-                  <div class="p-2">Education</div>
+                  <div class="p-2">Date of Birth</div>
                 </div>
                 <div
                   class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3"
                 >
-                  <div class="p-2">M.S Computer Science</div>
+                  <div class="p-2">{{applicant.dateOfBirth}}</div>
                 </div>
                 <div
                   class="col-5 col-md-3 bg-light border-bottom border-white border-3"
@@ -177,48 +181,30 @@
                 <div
                   class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3"
                 >
-                  <div class="p-2">Mountain View, California</div>
+                  <div class="p-2">{{applicant.address.street}}, {{applicant.address.city}}, {{applicant.address.state}} {{applicant.address.zipCode}}</div>
                 </div>
+
                 <div
                   class="col-5 col-md-3 bg-light border-bottom border-white border-3"
                 >
-                  <div class="p-2">Country</div>
+                  <div class="p-2">Eligible to Work</div>
                 </div>
                 <div
                   class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3"
                 >
-                  <div class="p-2">United States</div>
+                  <div class="p-2">{{applicant.eligibleToWork}}</div>
                 </div>
                 <div
                   class="col-5 col-md-3 bg-light border-bottom border-white border-3"
                 >
-                  <div class="p-2">Job</div>
+                  <div class="p-2">Willing to Relocate</div>
                 </div>
                 <div
                   class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3"
                 >
-                  <div class="p-2">Project Manager</div>
+                  <div class="p-2">{{applicant.relocation}}</div>
                 </div>
-                <div
-                  class="col-5 col-md-3 bg-light border-bottom border-white border-3"
-                >
-                  <div class="p-2">Company</div>
-                </div>
-                <div
-                  class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3"
-                >
-                  <div class="p-2">GitHub Inc</div>
-                </div>
-                <div
-                  class="col-5 col-md-3 bg-light border-bottom border-white border-3"
-                >
-                  <div class="p-2">Phone</div>
-                </div>
-                <div
-                  class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3"
-                >
-                  <div class="p-2">+1 (248) 679-8745</div>
-                </div>
+
                 <div
                   class="col-5 col-md-3 bg-light border-bottom border-white border-3"
                 >
@@ -227,14 +213,14 @@
                 <div
                   class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3"
                 >
-                  <div class="p-2">some example emails</div>
+                  <div class="p-2">{{applicant.email}}</div>
                 </div>
               </div>
             </div>
             <!-- Profile Section -->
 
             <!-- Edit Profile -->
-            <div id="edit-profile">
+            <div *ngIf="editApplicant != null" id="edit-profile">
               <h5 class="mb-3">Edit profile</h5>
 
               <div class="row gy-3 gy-xxl-4">
@@ -246,7 +232,8 @@
                     type="text"
                     class="form-control"
                     id="inputFirstName"
-                    value="FN"
+
+                    [(ngModel)]="editApplicant.firstName"
                   />
                 </div>
                 <div class="col-12 col-md-6">
@@ -257,89 +244,89 @@
                     type="text"
                     class="form-control"
                     id="inputLastName"
-                    value="LN"
+                    [(ngModel)]="editApplicant.lastName"
                   />
                 </div>
                 <div class="col-12 col-md-6">
-                  <label for="inputEducation" class="form-label"
-                    >Education</label
+                  <label for="inputDoB" class="form-label"
+                    >Date of Birth</label
                   >
                   <input
-                    type="text"
+                    type="date"
                     class="form-control"
-                    id="inputEducation"
-                    value="M.S Computer Science"
+                    id="inputDoB"
+                    [(ngModel)]="editApplicant.dateOfBirth"
                   />
                 </div>
                 <div class="col-12 col-md-6">
-                  <label for="inputSkills" class="form-label">Skills</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="inputSkills"
-                    value="HTML, SCSS, Javascript, React, Vue, Angular, UI, UX"
-                  />
-                </div>
-                <div class="col-12 col-md-6">
-                  <label for="inputJob" class="form-label">Job</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="inputJob"
-                    value="Project Manager"
-                  />
-                </div>
-                <div class="col-12 col-md-6">
-                  <label for="inputCompany" class="form-label">Company</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="inputCompany"
-                    value="GitHub Inc"
-                  />
-                </div>
-                <div class="col-12 col-md-6">
-                  <label for="inputPhone" class="form-label">Phone</label>
-                  <input
-                    type="tel"
-                    class="form-control"
-                    id="inputPhone"
-                    value="+12486798745"
-                  />
-                </div>
-                <div class="col-12 col-md-6">
-                  <label for="inputEmail" class="form-label">Email</label>
+                  <label for="inputEmail" class="form-label">Email Address</label>
                   <input
                     type="email"
                     class="form-control"
                     id="inputEmail"
-                    value="some example emails"
+                    [(ngModel)]="editApplicant.email"
                   />
                 </div>
                 <div class="col-12 col-md-6">
-                  <label for="inputAddress" class="form-label">Address</label>
+                  <label for="inputStreet" class="form-label">Street</label>
                   <input
                     type="text"
                     class="form-control"
-                    id="inputAddress"
-                    value="Mountain View, California"
+                    id="inputStreet"
+                    [(ngModel)]="editApplicant.address.street"
                   />
                 </div>
                 <div class="col-12 col-md-6">
-                  <label for="inputCountry" class="form-label">Country</label>
+                  <label for="inputCity" class="form-label">City</label>
                   <input
                     type="text"
                     class="form-control"
-                    id="inputCountry"
-                    value="United States"
+                    id="inputCity"
+                    [(ngModel)]="editApplicant.address.city"
+                  />
+                </div>
+                <div class="col-12 col-md-6">
+                  <label for="inputState" class="form-label">State</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputState"
+                    [(ngModel)]="editApplicant.address.state"
+                  />
+                </div>
+                <div class="col-12 col-md-6">
+                  <label for="inputZip" class="form-label">Zip Code</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputZip"
+                    [(ngModel)]="editApplicant.address.zipCode"
+                  />
+                </div>
+                <div class="col-12 col-md-6">
+                  <label for="inputEligibleToWork" class="form-check-label">Eligible To Work </label>
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    id="inputEligibleToWork"
+                    [(ngModel)]="editApplicant.eligibleToWork"
+                  />
+                </div>
+                <div class="col-12 col-md-6">
+                  <label for="inputRelocation" class="form-check-label">Willing to Relocate </label>
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    id="inputRelocation"
+                    [(ngModel)]="editApplicant.relocation"
                   />
                 </div>
 
                 <div class="col-12">
                   <label for="inputAbout" class="form-label">About</label>
-                  <textarea class="form-control" id="inputAbout">
-I am a seasoned and results-driven Project Manager who brings experience and expertise to project management. With a proven track record of successfully delivering complex projects on time and within budget, I am the go-to professional for organizations seeking efficient and effective project leadership.</textarea
-                  >
+                  <textarea class="form-control" id="inputAbout" [(ngModel)]="editApplicant.aboutMe">
+
+                  </textarea>
                 </div>
                 <div class="col-12">
                   <label for="inputProfilePictureUrl" class="form-label"
@@ -349,11 +336,11 @@ I am a seasoned and results-driven Project Manager who brings experience and exp
                     type="text"
                     class="form-control"
                     id="inputProfilePictureUrl"
-                    value="Some URL"
+                    [(ngModel)]="editApplicant.profileImg"
                   />
                 </div>
                 <div class="col-12">
-                  <button type="submit" class="btn btn-warning">
+                  <button (click)="updateApplicantInfo(editApplicant)" type="submit" class="btn btn-warning">
                     Save Changes
                   </button>
                 </div>
@@ -381,27 +368,28 @@ I am a seasoned and results-driven Project Manager who brings experience and exp
   <div class="container">
     <div class="row m-4">
       <!-- Job card -->
-      <div class="col-lg-4 col-md-6 col-sm-6">
+      <div (click)="test()" class="col-lg-4 col-md-6 col-sm-6" *ngFor="let item of applicant.applications">
         <div class="category mb-30">
           <div class="job">
             <a href=""
-              ><span class="colors1 mb-4">User Experience Designer</span></a
+              ><span class="colors{{item.id}} mb-4">{{item.jobPosting.title}}</span></a
             >
             <ul class="place">
               <li>
-                <p><i class="fas fa-map-marker-alt pe-2"></i> New York, USA</p>
+                <p><i class="fas fa-map-marker-alt pe-2"></i>{{item.jobPosting.address.city}},
+                  {{item.jobPosting.address.state}}</p>
               </li>
               <li>
                 <p class="ps-5">
-                  <i class="fas fa-map-marker-alt pe-2"></i>Full Time
+                  <i class="fas fa-map-marker-alt pe-2"></i>Full Time {{item.jobPosting.requirements}}
                 </p>
               </li>
             </ul>
             <div class="d-flex align-items-center justify-content-between m-2">
               <div class="left">
-                <p>Globe Solution Ltd.</p>
+                <p>Globe Solution Ltd. {{item.jobPosting.company}}</p>
               </div>
-              <div class="badge bg-success">$90K - $180K</div>
+              <div class="badge bg-success">${{item.jobPosting.minimumSalary}} - ${{item.jobPosting.maximumSalary}}</div>
             </div>
             <div class="d-flex align-items-center justify-content-between m-2">
               <div>

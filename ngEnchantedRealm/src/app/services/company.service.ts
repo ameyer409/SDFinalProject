@@ -91,7 +91,7 @@ export class CompanyService {
     }
 
     public findJobPostingApplications(id: number, jid: number): Observable<Application[]> {
-      return this.http.get<Jobposting[]>(this.url + '/' + id + '/jobpostings', this.getHttpOptions()).pipe(
+      return this.http.get<Application[]>(this.url + '/' + id + '/jobpostings/' + jid + '/applications', this.getHttpOptions()).pipe(
         catchError((err: any) => {
           return throwError(
             () => new Error('CompanyService.findJobPostingApplications(): error retrieving applications: ' + err)

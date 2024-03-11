@@ -11,6 +11,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { JobDetailApplicantViewComponent } from './components/job-detail-applicant-view/job-detail-applicant-view.component';
 import { JobPostingCompanyViewComponent } from './components/job-posting-company-view/job-posting-company-view.component';
+import { JobDetailGuestViewComponent } from './components/job-detail-guest-view/job-detail-guest-view.component';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -31,6 +32,10 @@ export const routes: Routes = [
   {
     path: 'jobDetailCompanyView',
     component: JobDetailCompanyViewComponent,
+  },
+  {
+    path: 'jobDetailGuestView',
+    component: JobDetailGuestViewComponent,
   },
   { path: '**', component: NotFoundComponent }, //page not found route
 ];

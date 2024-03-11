@@ -1,3 +1,6 @@
+import { Address } from "./address";
+import { Company } from "./company";
+
 export class Jobposting {
   id: number;
   title: string;
@@ -7,6 +10,8 @@ export class Jobposting {
   positions: number;
   enabled: boolean;
   requirements: string;
+  address: Address;
+  company: Company;
 
   constructor(
     id: number = 0,
@@ -16,7 +21,9 @@ export class Jobposting {
     maximumSalary: number = 0,
     positions: number = 0,
     enabled: boolean = false,
-    requirements: string = ''
+    requirements: string = '',
+    address: Address = new Address(),
+    company: Company = new Company()
   ){
     this.id = id;
     this.title = title;
@@ -26,5 +33,7 @@ export class Jobposting {
     this.positions = positions;
     this.enabled = enabled;
     this.requirements = requirements;
+    this.address = address;
+    this.company = company;
   }
 }
