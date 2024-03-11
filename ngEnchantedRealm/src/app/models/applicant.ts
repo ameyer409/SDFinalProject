@@ -1,3 +1,5 @@
+import { Address } from "./address";
+import { Application } from "./application";
 import { User } from "./user";
 
 export class Applicant {
@@ -10,13 +12,9 @@ export class Applicant {
   relocation: boolean;
   profileImg: string;
   aboutMe: string;
-  user: {
-    id: number,
-    username: string,
-    password: string,
-    enabled: boolean,
-    role: string
-  };
+  user: User;
+  address: Address;
+  applications: Application[];
 
   constructor(
     id: number = 0,
@@ -28,7 +26,9 @@ export class Applicant {
     relocation: boolean = false,
     profileImg: string = '',
     aboutMe: string = '',
-    user: User = new User()
+    user: User = new User(),
+    address: Address = new Address(),
+    applications: Application[] = []
   ){
     this.id = id;
     this.firstName = firstName;
@@ -40,5 +40,7 @@ export class Applicant {
     this.profileImg = profileImg;
     this.aboutMe = aboutMe;
     this.user = user;
+    this.address = address;
+    this.applications = applications;
   }
 }

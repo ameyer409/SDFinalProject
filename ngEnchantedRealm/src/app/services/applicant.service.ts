@@ -29,6 +29,16 @@ export class ApplicantService {
     return options;
   }
 
+  public getApplicant(): Observable<Applicant> {
+    return this.http.get<Applicant>(this.url + '/applicant', this.getHttpOptions()).pipe(
+      catchError((err: any) => {
+        return throwError(
+          () => new Error('applicantService.show: error finding Applicant: ' + err)
+        );
+      })
+    );
+  }
+
   public show(id: number): Observable<Applicant> {
     return this.http.get<Applicant>(this.url + '/' + id, this.getHttpOptions()).pipe(
       catchError((err: any) => {

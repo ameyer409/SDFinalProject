@@ -26,6 +26,15 @@ public class ApplicantController {
 	@Autowired
 	ApplicantService appServ;
 	
+	@GetMapping("applicants/applicant")
+	public Applicant getApplicantByUser(Principal principal, HttpServletResponse res, HttpServletRequest req) {
+		Applicant applicant = appServ.findByUsername(principal.getName());
+		if(applicant == null) {
+			res.setStatus(404);
+		}
+		return applicant;
+	}
+	
 	@GetMapping("applicants/{id}")
 	public Applicant getApplicant(@PathVariable("id") int id, Principal principal, HttpServletResponse res, HttpServletRequest req) {
 		Applicant applicant = appServ.findById(principal.getName(),id);
