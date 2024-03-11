@@ -5,11 +5,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.enchantedrealm.entities.Address;
 import com.skilldistillery.enchantedrealm.entities.Application;
 import com.skilldistillery.enchantedrealm.entities.Company;
 import com.skilldistillery.enchantedrealm.entities.JobPosting;
 import com.skilldistillery.enchantedrealm.entities.Status;
 import com.skilldistillery.enchantedrealm.entities.User;
+import com.skilldistillery.enchantedrealm.repositories.AddressRepository;
 import com.skilldistillery.enchantedrealm.repositories.ApplicationRepository;
 import com.skilldistillery.enchantedrealm.repositories.CompanyRepository;
 import com.skilldistillery.enchantedrealm.repositories.JobPostingRepository;
@@ -29,6 +31,9 @@ public class CompanyServiceImpl implements CompanyService {
 	
 	@Autowired
 	private UserRepository userRepo;
+	
+	@Autowired
+	private AddressRepository addRepo;
 
 	@Override
 	public List<Company> findAllCompanies() {
@@ -109,7 +114,10 @@ public class CompanyServiceImpl implements CompanyService {
 	public Company create(Company company, String name) {
 		User user = userRepo.findByUsername(name);
 		if(user != null) {
+			Address address = new Address();
+			addRepo.saveAndFlush(address);
 			company.setUser(user);
+			company.setAddress(address);
 			return companyRepo.saveAndFlush(company);
 		}
 		

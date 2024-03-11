@@ -6,6 +6,8 @@ public interface ApplicantService {
 	
 	Applicant findById(String username, int id);
 	
+	Applicant findByUsername(String username);
+	
 	Applicant create(Applicant applicant, String username);
 
 	Applicant update(Applicant applicant, String name, int id);

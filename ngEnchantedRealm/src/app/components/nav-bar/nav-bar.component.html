@@ -35,16 +35,19 @@
             </a>
           </li>
           <li
+            *ngIf="!isLoggedIn()"
             class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home nav-item nav-item-32738"
           >
             <a class="nav-link" [routerLink]="['/logIn']">Login/Register</a>
           </li>
           <li
+            *ngIf="isLoggedIn()"
             class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home nav-item nav-item-32738"
           >
-            <button class="nav-link">Log out</button>
+            <button (click)="logout()" class="nav-link">Log out</button>
           </li>
           <li
+            *ngIf="isApplicant()"
             class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home nav-item nav-item-32738"
           >
             <a class="nav-link" [routerLink]="['/applicantProfile']"
@@ -52,6 +55,7 @@
             >
           </li>
           <li
+            *ngIf="isCompany()"
             class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home nav-item nav-item-32738"
           >
             <a class="nav-link" [routerLink]="['/companyProfile']">

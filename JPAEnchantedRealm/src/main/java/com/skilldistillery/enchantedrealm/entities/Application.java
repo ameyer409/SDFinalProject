@@ -32,7 +32,6 @@ public class Application {
 	@ManyToOne
 	@JoinColumn(name="job_posting_id")
 	private JobPosting jobPosting;
-	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="applicant_id")
 	private Applicant applicant;
