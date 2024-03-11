@@ -146,7 +146,7 @@
           <div class="card-body p-4">
             <!-- Profile Section -->
             <div id="profile-section">
-              <h5 class="mb-3">About</h5>
+              <h5 class="mb-3">Overview</h5>
               <p class="lead mb-3">
                 Microsoft is the largest vendor of computer software in the
                 world. It is also a leading provider of cloud computing
@@ -170,7 +170,7 @@
                 <div
                   class="col-5 col-md-3 bg-light border-bottom border-white border-3"
                 >
-                  <div class="p-2">Year founded</div>
+                  <div class="p-2">Date Created</div>
                 </div>
                 <div
                   class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3"
@@ -180,7 +180,7 @@
                 <div
                   class="col-5 col-md-3 bg-light border-bottom border-white border-3"
                 >
-                  <div class="p-2">Business sector</div>
+                  <div class="p-2">Industry</div>
                 </div>
                 <div
                   class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3"
@@ -198,46 +198,15 @@
                   <div class="p-2">Mountain View, California</div>
                 </div>
                 <div
-                  class="col-5 col-md-3 bg-light border-bottom border-white border-3"
-                >
-                  <div class="p-2">Country</div>
-                </div>
-                <div
-                  class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3"
-                >
-                  <div class="p-2">United States</div>
-                </div>
-                <div
-                  class="col-5 col-md-3 bg-light border-bottom border-white border-3"
-                >
-                  <div class="p-2">Employee</div>
-                </div>
-                <div
-                  class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3"
-                >
-                  <div class="p-2">500</div>
-                </div>
-
-                <div
-                  class="col-5 col-md-3 bg-light border-bottom border-white border-3"
-                >
-                  <div class="p-2">Phone</div>
-                </div>
-                <div
-                  class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3"
-                >
-                  <div class="p-2">+1 (248) 679-8745</div>
-                </div>
-                <div
-                  class="col-5 col-md-3 bg-light border-bottom border-white border-3"
-                >
-                  <div class="p-2">Email</div>
-                </div>
-                <div
-                  class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3"
-                >
-                  <div class="p-2">some example emails</div>
-                </div>
+                class="col-5 col-md-3 bg-light border-bottom border-white border-3"
+              >
+                <div class="p-2">Logo</div>
+              </div>
+              <div
+                class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3"
+              >
+                <div class="p-2"><img src="" alt=""></div>
+              </div>
               </div>
             </div>
             <!-- Profile Section -->
@@ -281,15 +250,6 @@
                   />
                 </div>
                 <div class="col-12 col-md-6">
-                  <label for="inputSkills" class="form-label">Employees</label>
-                  <input
-                    type="number"
-                    class="form-control"
-                    id="inputSkills"
-                    value="500"
-                  />
-                </div>
-                <div class="col-12 col-md-6">
                   <label for="inputJob" class="form-label">Address</label>
                   <input
                     type="text"
@@ -298,33 +258,7 @@
                     value="Mountain View, California"
                   />
                 </div>
-                <div class="col-12 col-md-6">
-                  <label for="inputCompany" class="form-label">Country</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="inputCompany"
-                    value="USA"
-                  />
-                </div>
-                <div class="col-12 col-md-6">
-                  <label for="inputPhone" class="form-label">Phone</label>
-                  <input
-                    type="tel"
-                    class="form-control"
-                    id="inputPhone"
-                    value="+12486798745"
-                  />
-                </div>
-                <div class="col-12 col-md-6">
-                  <label for="inputEmail" class="form-label">Email</label>
-                  <input
-                    type="email"
-                    class="form-control"
-                    id="inputEmail"
-                    value="some example emails"
-                  />
-                </div>
+
 
                 <div class="col-12">
                   <label for="inputAbout" class="form-label">About</label>
@@ -334,7 +268,7 @@ Microsoft is the largest vendor of computer software in the world. It is also a 
                 </div>
                 <div class="col-12">
                   <label for="inputProfilePictureUrl" class="form-label"
-                    >Profile Pricture URL</label
+                    >Profile Pricture Logo</label
                   >
                   <input
                     type="text"
@@ -391,17 +325,39 @@ Microsoft is the largest vendor of computer software in the world. It is also a 
                   />
                 </div>
                 <div class="col-12 col-md-6">
+                  <label for="address" class="form-label"
+                    >Address</label
+                  >
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="address"
+                    value="Los Angeles, CA"
+                  />
+                </div>
+                <div class="col-12 col-md-6">
                   <label for="inputSkills" class="form-label"
                     >Maximum salary</label
                   >
                   <input
-                    type="number"
+                    type="text"
                     class="form-control"
                     id="inputSkills"
                     value="170000"
                   />
                 </div>
 
+                <div class="col-12 col-md-6">
+                  <label for="positions" class="form-label"
+                    >Positions</label
+                  >
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="positions"
+                    value="1"
+                  />
+                </div>
                 <div class="col-12">
                   <label for="inputAbout" class="form-label">Description</label>
                   <textarea class="form-control" id="inputAbout">
