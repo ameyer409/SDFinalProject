@@ -124,4 +124,11 @@ public class CompanyServiceImpl implements CompanyService {
 		return null;
 	}
 
+	@Override
+	public Company findByUsername(String name) {
+		// TODO Auto-generated method stub
+		Company company = companyRepo.findByUser_username(name);
+		return company;
+	}
+
 }

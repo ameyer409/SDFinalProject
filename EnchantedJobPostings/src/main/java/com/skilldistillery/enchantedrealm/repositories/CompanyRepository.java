@@ -8,4 +8,6 @@ public interface CompanyRepository extends JpaRepository<Company, Integer>{
 	
 	Company findById(int id);
 
+	Company findByUser_username(String name);
+
 }

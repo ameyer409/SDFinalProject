@@ -1,6 +1,6 @@
 import { User } from './../../models/user';
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Application } from '../../models/application';
 import { Jobposting } from '../../models/jobposting';
@@ -16,9 +16,13 @@ import { CompanyService } from '../../services/company.service';
   templateUrl: './company-profile.component.html',
   styleUrl: './company-profile.component.css'
 })
-export class CompanyProfileComponent {
+export class CompanyProfileComponent implements OnInit{
 
 constructor(private companyService: CompanyService){};
+
+ngOnInit(): void {
+this.getCompanyProfile();
+}
 
 public applications: Application[] = [];
 public jobpostings: Jobposting[] = [];
@@ -38,6 +42,18 @@ public showCompanyDetails(companyId: number){
       console.error(err);
     },
   });
+}
+
+public getCompanyProfile(){
+  this.companyService.getCompanyProfile().subscribe({
+    next: (company) => {
+      this.selectedCompany = company;
+    },
+    error: (err) => {
+      console.error("CompanyComponent.ts: error loading company page");
+      console.error(err);
+    },
+  })
 }
 
 public editCompany(company: Company){
