@@ -6,7 +6,7 @@ export class Applicant {
   id: number;
   firstName: string;
   lastName: string;
-  birthdate: string | null;
+  dateOfBirth: string | null;
   email: string;
   eligibleToWork: boolean;
   relocation: boolean;
@@ -33,7 +33,7 @@ export class Applicant {
     this.id = id;
     this.firstName = firstName;
     this.lastName = lastName;
-    this.birthdate = birthdate;
+    this.dateOfBirth = birthdate;
     this.email = email;
     this.eligibleToWork = eligibleToWork;
     this.relocation = relocation;

@@ -60,11 +60,11 @@ export class ApplicantService {
   }
 
   public update(applicant: Applicant): Observable<Applicant> {
-    if(applicant.birthdate !== '' && applicant.birthdate !== null) {
-      applicant.birthdate = this.datePipe.transform(new Date(applicant.birthdate), 'fullDateTime');
+    if(applicant.dateOfBirth !== '' && applicant.dateOfBirth !== null) {
+      applicant.dateOfBirth = this.datePipe.transform(new Date(applicant.dateOfBirth), 'yyyy-MM-dd');
     }
     else {
-      applicant.birthdate = '';
+      applicant.dateOfBirth = '';
     }
     return this.http.put<Applicant>(this.url + '/' + applicant.id, applicant, this.getHttpOptions()).pipe(
       catchError((err: any) => {

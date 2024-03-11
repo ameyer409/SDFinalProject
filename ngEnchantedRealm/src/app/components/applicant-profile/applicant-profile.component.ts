@@ -9,26 +9,21 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-applicant-profile',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule
-  ],
+  imports: [CommonModule, FormsModule],
   templateUrl: './applicant-profile.component.html',
-  styleUrl: './applicant-profile.component.css'
+  styleUrl: './applicant-profile.component.css',
 })
-export class ApplicantProfileComponent implements OnInit{
-
+export class ApplicantProfileComponent implements OnInit {
   user: User = new User();
   applicant: Applicant = new Applicant();
   editUser: User | null = null;
   editApplicant: Applicant | null = null;
-  isEditUser: boolean = false;
-  isEditApplicant: boolean = false;
+  confirmPassword: string = '';
 
   constructor(
     private auth: AuthService,
     private applicantService: ApplicantService
-    ) {}
+  ) {}
 
   ngOnInit(): void {
     this.getUser();
@@ -36,15 +31,14 @@ export class ApplicantProfileComponent implements OnInit{
   }
 
   getUser() {
-    if(this.isLoggedIn()){
+    if (this.isLoggedIn()) {
       this.auth.getLoggedInUser().subscribe({
         next: (result) => {
           this.user = result;
         },
         error: (err) => {
-
           console.log(err);
-        }
+        },
       });
     }
   }
@@ -53,14 +47,11 @@ export class ApplicantProfileComponent implements OnInit{
     this.applicantService.getApplicant().subscribe({
       next: (result) => {
         this.applicant = result;
-        console.log(this.applicant);
       },
       error: (err) => {
-
         console.log(err);
-      }
+      },
     });
-
   }
 
   isLoggedIn() {
@@ -68,12 +59,35 @@ export class ApplicantProfileComponent implements OnInit{
   }
 
   editUserCredentials() {
-    this.editUser = Object.assign({}, this.user);
+    if (this.editUser == null) {
+      this.editUser = Object.assign({}, this.user);
+      this.editUser.password = ''
+    } else {
+      console.log(this.editUser.password);
+      console.log(this.confirmPassword);
+      this.editUser = null;
+    }
   }
 
   editApplicantCredentials() {
-    this.editApplicant = Object.assign({}, this.applicant);
+    if (this.editApplicant == null) {
+      this.editApplicant = Object.assign({}, this.applicant);
+    } else {
+      this.editApplicant = null;
+    }
+  }
+
+  updateApplicantInfo(applicant: Applicant) {
+    this.applicantService.update(applicant).subscribe({
+      next: (result) => {
+        this.applicant = result;
+        this.editApplicantCredentials();
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
+
   }
 
 }
-
