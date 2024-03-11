@@ -118,5 +118,21 @@ public class CompanyController {
 		return createdCompany;
 	}
 	
+	@GetMapping("companies/company")
+	public Company getCompany(Principal principal, HttpServletRequest req, HttpServletResponse res) {
+		Company company;
+		try {
+			company = companyServ.findByUsername(principal.getName());
+			res.setStatus(201);
+			res.setHeader("Location", req.getRequestURL().append("/").append(company.getId()).toString());
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			res.setStatus(400);
+			company = null;
+		}
+		return company;
+	}
 	
+
 }

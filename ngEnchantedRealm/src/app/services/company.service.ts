@@ -110,4 +110,14 @@ export class CompanyService {
       );
     }
 
+    public getCompanyProfile(): Observable<Company>{
+      return this.http.get<Company>(this.url + '/company', this.getHttpOptions()).pipe(
+        catchError((err: any) => {
+          return throwError(
+            () => new Error('CompanyService.getCompanyProfile(): error getting company profile ' + err)
+          );
+        })
+      )
+    }
+
 }
