@@ -25,4 +25,6 @@ public interface CompanyService {
 
 	Company create(Company company, String name);
 
+	Company findByUsername(String name);
+
 }
