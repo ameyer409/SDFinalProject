@@ -27,7 +27,7 @@ public user: User = new User;
 
 public companyToEdit: Company | null = null;
 
-public selectedJobPosting: Jobposting = new Jobposting();
+public selectedJobPosting: Jobposting | null = null;
 
 public selectedCompany: Company = new Company;
 
@@ -88,6 +88,10 @@ public getJobPostings(id: number){
       console.error(err);
     },
   });
+}
+
+public showAddJobPostingForm(){
+  this.selectedJobPosting = new Jobposting();
 }
 
 public addNewJobPosting(companyId: number){
