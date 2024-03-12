@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -87,6 +89,24 @@ public class JobPostingController {
 	@GetMapping("jobpostings/{id}/applications")
 	public List<Application> findAppsByJobId(@PathVariable("id") int id, HttpServletRequest req, HttpServletResponse res) {
 		return appService.findAppsByJobId(id);
+	}
+	
+	@PutMapping("jobpostings/{id}/")
+	public JobPosting updateJobPosting(@PathVariable("id") int id, @RequestBody JobPosting jobPost, Principal principal, HttpServletResponse res, HttpServletRequest req) {
+		JobPosting updatedJobPosting;
+		try {
+			updatedJobPosting = jpService.updateJobPosting(principal.getName(), id, jobPost);
+			if(updatedJobPosting == null) {
+				res.setStatus(404);
+			} else {
+				res.setStatus(200);
+			}
+		} catch (Exception e) {
+			res.setStatus(400);
+			e.printStackTrace();
+			updatedJobPosting = null;
+		}
+		return updatedJobPosting;
 	}
 	
 }

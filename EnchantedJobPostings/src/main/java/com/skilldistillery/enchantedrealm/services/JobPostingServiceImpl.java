@@ -80,6 +80,14 @@ public class JobPostingServiceImpl implements JobPostingService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public JobPosting updateJobPosting(String username, int id, JobPosting jobPost) {
+		
+		return null;
+	}
+	
+	
 	
 	
 }
