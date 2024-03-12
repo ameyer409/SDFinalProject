@@ -47,7 +47,7 @@
                 </div>
                 <div class="d-grid m-1">
                   <button (click)="editUserCredentials()" class="btn btn-outline-warning" type="button">
-                    Edit Username / Password
+                    Update Password
                   </button>
                 </div>
               </div>
@@ -372,7 +372,7 @@
         <div class="category mb-30">
           <div class="job">
 
-              <span class="colors{{item.id}} mb-4">{{item.jobPosting.title}}</span>
+              <span class="colors{{item.jobPosting.id % 5 + 1}} mb-4">{{item.jobPosting.title}}</span>
             <ul class="place">
               <li>
                 <p><i class="fas fa-map-marker-alt pe-2"></i>{{item.jobPosting.address.city}},

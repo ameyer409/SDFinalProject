@@ -29,7 +29,7 @@ export class JobpostingService {
   }
 
   public index(): Observable<Jobposting[]> {
-    return this.http.get<Jobposting[]>(this.url, this.getHttpOptions()).pipe(
+    return this.http.get<Jobposting[]>(this.url).pipe(
       catchError((err: any) => {
         return throwError(
           () => new Error('JobPostingService.index(): error retrieving jobpostings: ' + err)

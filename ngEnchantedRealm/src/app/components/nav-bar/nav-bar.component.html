@@ -28,9 +28,10 @@
         <!--  nav_menu -->
         <ul id="menu-menu-1" class="navbar-nav">
           <li
+            *ngIf="!isCompany()"
             class="menu-item menu-item-type-custom menu-item-object-custom nav-item nav-item-32739"
           >
-            <a class="nav-link" [routerLink]="['/viewAllJobsCompany']">
+            <a class="nav-link" [routerLink]="['/viewAllJobsApplicant']">
               View All Jobs
             </a>
           </li>
@@ -76,11 +77,11 @@
               Testimonial
             </a>
           </li>
-          <li
+          <!-- <li
             class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home nav-item nav-item-32738"
           >
             <button class="nav-link">Profile</button>
-          </li>
+          </li> -->
         </ul>
         <!-- /lc_nav_menu -->
       </div>
