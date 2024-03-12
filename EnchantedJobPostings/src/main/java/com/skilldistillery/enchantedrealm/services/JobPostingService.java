@@ -27,4 +27,6 @@ public interface JobPostingService {
 	public List<JobPosting> findByTitle(String title);
 	
 	public List<JobPosting> findByCompanyId(int id);
+
+	public JobPosting createJobPosting(JobPosting jobPost);
 }
