@@ -90,14 +90,6 @@ export class JobDetailApplicantViewComponent implements OnInit{
       next: (result) => {
         this.currentApplicant = result;
         this.checkApplicationStatus();
-        // this.applicationService.index().subscribe({
-        //   next: (result) => {
-        //     this.apps = result;
-        //   },
-        //   error: (err) => {
-        //     console.log(err);
-        //   }
-        // })
       },
       error: (err) => {
         console.log(err);
