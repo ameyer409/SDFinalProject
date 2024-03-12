@@ -62,7 +62,7 @@
                   </button>
                 </div>
                 <div class="d-grid m-1">
-                  <button class="btn btn-outline-success" type="button">
+                  <button (click)="showAddJobPostingForm()" class="btn btn-outline-success" type="button">
                     Post a new job
                   </button>
                 </div>
@@ -259,7 +259,7 @@
             <!-- / Edit profile -->
 
             <!-- Post a new job -->
-            <div id="new-job-posting">
+            <div *ngIf="selectedJobPosting" id="new-job-posting">
               <h5 class="mb-3">Post a new job</h5>
 
               <div class="row gy-3 gy-xxl-4">
@@ -271,7 +271,7 @@
                     type="text"
                     class="form-control"
                     id="inputFirstName"
-                    value="Microsoft"
+
                   />
                 </div>
                 <div class="col-12 col-md-6">
@@ -293,7 +293,7 @@
                     type="number"
                     class="form-control"
                     id="inputEducation"
-                    value="100000"
+                    value=""
                   />
                 </div>
                 <div class="col-12 col-md-6">
@@ -304,7 +304,7 @@
                     type="number"
                     class="form-control"
                     id="address"
-                    value="Los Angeles, CA"
+                    value=""
                   />
                 </div>
                 <div class="col-12 col-md-6">
@@ -315,7 +315,7 @@
                     type="text"
                     class="form-control"
                     id="inputSkills"
-                    value="170000"
+                    value=""
                   />
                 </div>
 
@@ -333,8 +333,7 @@
                 <div class="col-12">
                   <label for="inputAbout" class="form-label">Description</label>
                   <textarea class="form-control" id="inputAbout">
-What Is the Job Description for a Software Developer? Software developers design, program, build, deploy and maintain software using many different skills and tools. They also help build software systems that power networks and devices and ensure that those systems remain functional.</textarea
-                  >
+                  </textarea>
                 </div>
 
                 <div class="col-12">

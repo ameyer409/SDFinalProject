@@ -1,4 +1,4 @@
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { JobpostingService } from './../../services/jobposting.service';
 import { Component, OnInit } from '@angular/core';
 import { Jobposting } from '../../models/jobposting';
@@ -10,7 +10,8 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    RouterLink
   ],
   templateUrl: './job-detail-company-view.component.html',
   styleUrl: './job-detail-company-view.component.css'
