@@ -6,11 +6,13 @@ import { ApplicantService } from '../../services/applicant.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Application } from '../../models/application';
+import { ApplicationService } from '../../services/application.service';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-applicant-profile',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './applicant-profile.component.html',
   styleUrl: './applicant-profile.component.css',
 })
@@ -20,25 +22,19 @@ export class ApplicantProfileComponent implements OnInit {
   editUser: User | null = null;
   editApplicant: Applicant | null = null;
   confirmPassword: string = '';
-  applicaitons: Application[] = [];
+  apps: Application[] = [];
 
   constructor(
     private auth: AuthService,
-    private applicantService: ApplicantService
+    private applicantService: ApplicantService,
+    private applicationService: ApplicationService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.getUser();
     this.getApplicant();
-    this.test();
 
-  }
-
-  test(){
-    this.applicant.applications.forEach(element => {
-      console.log(element.jobPosting.company);
-      console.log('test')
-    });
   }
 
   getUser() {
@@ -58,6 +54,14 @@ export class ApplicantProfileComponent implements OnInit {
     this.applicantService.getApplicant().subscribe({
       next: (result) => {
         this.applicant = result;
+        this.applicationService.index().subscribe({
+          next: (result) => {
+            this.apps = result;
+          },
+          error: (err) => {
+            console.log(err);
+          }
+        })
       },
       error: (err) => {
         console.log(err);

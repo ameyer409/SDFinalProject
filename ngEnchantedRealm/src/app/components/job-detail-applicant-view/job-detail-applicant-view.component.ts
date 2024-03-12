@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-job-detail-applicant-view',
@@ -7,6 +7,9 @@ import { Component } from '@angular/core';
   templateUrl: './job-detail-applicant-view.component.html',
   styleUrl: './job-detail-applicant-view.component.css'
 })
-export class JobDetailApplicantViewComponent {
+export class JobDetailApplicantViewComponent implements OnInit{
+  ngOnInit(): void {
+    console.log('landing on details page');
+  }
 
 }
