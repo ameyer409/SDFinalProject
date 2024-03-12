@@ -49,6 +49,11 @@ public class ApplicationServiceImpl implements ApplicationService {
 		}
 		return apps;
 	}
+	
+	@Override
+	public List<Application> findAppsByJobId(int id) {
+		return appRepo.findByJobPosting_id(id);
+	}
 
 	@Override
 	public List<Application> getAll(String name) {

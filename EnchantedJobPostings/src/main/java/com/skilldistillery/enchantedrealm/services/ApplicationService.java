@@ -8,6 +8,8 @@ import com.skilldistillery.enchantedrealm.entities.Company;
 public interface ApplicationService  {
 
 	List<Application> findByJobPostingId(String username, Company company, int id);
+	
+	List<Application> findAppsByJobId(int id);
 
 	List<Application> getAll(String name);
 
