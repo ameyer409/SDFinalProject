@@ -20,6 +20,8 @@ export class JobDetailCompanyViewComponent implements OnInit {
 
 jobposting: Jobposting | null = null;
 
+editedJobPosting: Jobposting | null = null;
+
 ngOnInit(): void {
   this.getJobPostingDetails();
 }
@@ -55,5 +57,6 @@ constructor(private jobService: JobpostingService,
       }
     })
   }
+
 
 }
