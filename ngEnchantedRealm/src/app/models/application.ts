@@ -8,6 +8,7 @@ export class Application {
   jobPosting: Jobposting;
   applicant: Applicant;
   status: Status;
+
   constructor(
     id: number = 0,
     notes: string = '',

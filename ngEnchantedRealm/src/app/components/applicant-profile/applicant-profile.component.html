@@ -368,12 +368,11 @@
   <div class="container">
     <div class="row m-4">
       <!-- Job card -->
-      <div (click)="test()" class="col-lg-4 col-md-6 col-sm-6" *ngFor="let item of applicant.applications">
+      <div [routerLink]="['/jobDetailApplicantView/' + item.id]" class="col-lg-4 col-md-6 col-sm-6" *ngFor="let item of apps">
         <div class="category mb-30">
           <div class="job">
-            <a href=""
-              ><span class="colors{{item.id}} mb-4">{{item.jobPosting.title}}</span></a
-            >
+
+              <span class="colors{{item.id}} mb-4">{{item.jobPosting.title}}</span>
             <ul class="place">
               <li>
                 <p><i class="fas fa-map-marker-alt pe-2"></i>{{item.jobPosting.address.city}},
@@ -387,7 +386,7 @@
             </ul>
             <div class="d-flex align-items-center justify-content-between m-2">
               <div class="left">
-                <p>Globe Solution Ltd. {{item.jobPosting.company}}</p>
+                <p>{{item.jobPosting.company.name}}</p>
               </div>
               <div class="badge bg-success">${{item.jobPosting.minimumSalary}} - ${{item.jobPosting.maximumSalary}}</div>
             </div>
@@ -405,7 +404,7 @@
       <!-- / Job card -->
 
       <!-- Job card -->
-      <div class="col-lg-4 col-md-6 col-sm-6">
+      <!-- <div class="col-lg-4 col-md-6 col-sm-6">
         <div class="category mb-30">
           <div class="job">
             <a href=""
@@ -439,11 +438,11 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
       <!-- / Job card -->
 
       <!-- Job card -->
-      <div class="col-lg-4 col-md-6 col-sm-6">
+      <!-- <div class="col-lg-4 col-md-6 col-sm-6">
         <div class="category mb-30">
           <div class="job">
             <a href=""><span class="colors3 mb-4">Medical Assistant</span></a>
@@ -473,11 +472,11 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
       <!-- / Job card -->
 
       <!-- Job card -->
-      <div class="col-lg-4 col-md-6 col-sm-6">
+      <!-- <div class="col-lg-4 col-md-6 col-sm-6">
         <div class="category mb-30">
           <div class="job">
             <a href=""
@@ -509,11 +508,11 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
       <!-- / Job card -->
 
       <!-- Job card -->
-      <div class="col-lg-4 col-md-6 col-sm-6">
+      <!-- <div class="col-lg-4 col-md-6 col-sm-6">
         <div class="category mb-30">
           <div class="job">
             <a href=""
@@ -547,7 +546,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
       <!-- / Job card -->
 
       <!-- <div class="col-12 d-flex align-items-center justify-content-center">
