@@ -39,7 +39,7 @@ export class JobpostingService {
   }
 
   public show(id: number): Observable<Jobposting> {
-    return this.http.get<Jobposting>(this.url + '/' + id, this.getHttpOptions()).pipe(
+    return this.http.get<Jobposting>(this.url + '/' + id).pipe(
       catchError((err: any) => {
         return throwError(
           () => new Error('JobPostingService.show: error finding JobPosting: ' + err)

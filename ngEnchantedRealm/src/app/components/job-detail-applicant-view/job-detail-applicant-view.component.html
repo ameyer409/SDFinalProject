@@ -58,7 +58,7 @@
             </div>
           </div>
 
-          <div class="col-12">
+          <div *ngIf="currentApplicant != null" class="col-12">
             <!-- If the user have not applied, display this -->
             <div *ngIf="currentApplication == null" class="card widget-card border-light shadow-sm">
               <div class="card-header text-bg-primary">Application status</div>
@@ -148,7 +148,7 @@
         <!-- / Job Detail View -->
 
         <!-- Edit Job Details -->
-        <div class="card widget-card border-light shadow-sm">
+        <div *ngIf="currentApplicant != null" class="card widget-card border-light shadow-sm">
           <div class="card-body p-4">
             <div id="new-job-posting">
               <h5 class="mb-3">Number of Applicants</h5>
