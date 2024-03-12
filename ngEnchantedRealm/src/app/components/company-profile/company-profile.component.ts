@@ -68,13 +68,22 @@ public editCompany(company: Company){
   this.companyService.update(company).subscribe({
     next: (company) => {
       this.selectedCompany = company;
-      this.companyToEdit = company;
+      this.companyToEdit = null;
     },
     error: (err) => {
       console.error("CompanyComponent.ts: error loading company page");
       console.error(err);
     },
   });
+}
+
+public setEditCompany() {
+  if(this.companyToEdit == null) {
+    this.companyToEdit = this.selectedCompany
+  }
+  else {
+    this.companyToEdit = null;
+  }
 }
 
 public getJobPostings(id: number){
@@ -91,13 +100,20 @@ public getJobPostings(id: number){
 }
 
 public showAddJobPostingForm(){
-  this.selectedJobPosting = new Jobposting();
+  if(this.selectedJobPosting == null){
+    this.selectedJobPosting = new Jobposting();
+  }
+  else {
+    this.selectedJobPosting = null;
+  }
 }
 
-public addNewJobPosting(companyId: number){
-  this.companyService.addNewJobPosting(companyId).subscribe({
+public addNewJobPosting(companyId: number, jobPost: Jobposting){
+  this.companyService.addNewJobPosting(companyId, jobPost).subscribe({
     next: (jobPosting) => {
       this.selectedJobPosting = jobPosting;
+      this.getCompanyProfile();
+      this.showAddJobPostingForm();
     },
     error: (err) => {
       console.error("CompanyComponent.ts: error creating new job posting");

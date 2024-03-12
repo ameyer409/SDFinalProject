@@ -1,6 +1,7 @@
 package com.skilldistillery.enchantedrealm.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -67,6 +68,15 @@ public class CompanyServiceImpl implements CompanyService {
 		if (!companyToUpdate.getUser().getUsername().equals(username)) {
 			return null;
 		} else {
+			Optional<Address> addressOpt = addRepo.findById(company.getAddress().getId());
+			if(addressOpt.isPresent()) {
+				Address address = addressOpt.get();
+				address.setStreet(company.getAddress().getStreet());
+				address.setCity(company.getAddress().getCity());
+				address.setState(company.getAddress().getState());
+				address.setZipCode(company.getAddress().getZipCode());
+				addRepo.save(address);
+			}
 			companyToUpdate.setAddress(company.getAddress());
 			companyToUpdate.setLogo(company.getLogo());
 			companyToUpdate.setName(company.getName());

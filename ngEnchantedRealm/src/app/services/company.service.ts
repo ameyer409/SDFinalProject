@@ -100,8 +100,8 @@ export class CompanyService {
       );
     }
 
-    public addNewJobPosting(id: number): Observable<Jobposting>{
-      return this.http.post<Jobposting>(this.url + '/' + id + '/jobpostings', this.getHttpOptions()).pipe(
+    public addNewJobPosting(id: number, jobPost: Jobposting): Observable<Jobposting>{
+      return this.http.post<Jobposting>(this.url + '/' + id + '/jobpostings', jobPost, this.getHttpOptions()).pipe(
         catchError((err: any) => {
           return throwError(
             () => new Error('CompanyService.addNewJobPosting(): error creating job posting: ' + err)

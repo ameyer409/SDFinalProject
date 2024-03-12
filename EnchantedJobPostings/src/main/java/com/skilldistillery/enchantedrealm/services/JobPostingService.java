@@ -28,5 +28,5 @@ public interface JobPostingService {
 	
 	public List<JobPosting> findByCompanyId(int id);
 
-	public JobPosting createJobPosting(JobPosting jobPost);
+	public JobPosting createJobPosting(int id , JobPosting jobPost);
 }

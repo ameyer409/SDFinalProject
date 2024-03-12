@@ -52,7 +52,7 @@
                   </li>
                 </ul>
                 <div class="d-grid m-1">
-                  <button (click)="editCompany(selectedCompany)" class="btn btn-outline-success" type="button">
+                  <button (click)="setEditCompany()" class="btn btn-outline-success" type="button">
                     Edit Profile
                   </button>
                 </div>
@@ -104,8 +104,8 @@
         </div>
       </div>
       <div class="col-12 col-lg-8 col-xl-9">
-        <div class="card widget-card border-light shadow-sm">
-          <div class="card-body p-4">
+         <div class="card widget-card border-light shadow-sm">
+          <!-- <div class="card-body p-4">  -->
             <!-- Edit Username and Password -->
             <!-- <div id="edit-username-password">
               <h5 class="mb-3">Edit Username / Password</h5>
@@ -140,20 +140,15 @@
               </div>
             </div> -->
             <!-- / Edit Username and Password -->
-          </div>
+          <!-- </div> -->
         </div>
         <div class="card widget-card border-light shadow-sm">
           <div class="card-body p-4">
             <!-- Profile Section -->
-            <div id="profile-section">
+            <div *ngIf="companyToEdit == null && selectedJobPosting == null" id="profile-section">
               <h5 class="mb-3">Overview</h5>
               <p class="lead mb-3">
-                Microsoft is the largest vendor of computer software in the
-                world. It is also a leading provider of cloud computing
-                services, video games, computer and gaming hardware, search and
-                other online services. Microsoft's corporate headquarters is
-                located in Redmond, Wash., and it has offices in more than 60
-                countries.
+                {{selectedCompany.overview}}
               </p>
               <h5 class="mb-3">Profile</h5>
               <div class="row g-0">
@@ -198,7 +193,7 @@
               <div class="row gy-3 gy-xxl-4">
                 <div class="col-12 col-md-6">
                   <label for="name" class="form-label"
-                    >{{selectedCompany.name}}</label
+                    >Company Name</label
                   >
                   <input
                     type="text"
@@ -221,13 +216,39 @@
                   />
                 </div> -->
                 <div class="col-12 col-md-6">
-                  <label for="inputJob" class="form-label">Address</label>
+                  <label for="inputStreet" class="form-label">Street</label>
                   <input
                     type="text"
                     class="form-control"
-                    id="inputJob"
-                    placeholder="{{selectedCompany.address.city}} , {{selectedCompany.address.state}}"
-                    value="{{selectedCompany.address}}"
+                    id="inputStreet"
+                    [(ngModel)]="companyToEdit.address.street"
+                  />
+                </div>
+                <div class="col-12 col-md-6">
+                  <label for="inputCity" class="form-label">City</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputCity"
+                    [(ngModel)]="companyToEdit.address.city"
+                  />
+                </div>
+                <div class="col-12 col-md-6">
+                  <label for="inputState" class="form-label">State</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputState"
+                    [(ngModel)]="companyToEdit.address.state"
+                  />
+                </div>
+                <div class="col-12 col-md-6">
+                  <label for="inputZip" class="form-label">Zip Code</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputZip"
+                    [(ngModel)]="companyToEdit.address.zipCode"
                   />
                 </div>
 
@@ -270,8 +291,8 @@
                   <input
                     type="text"
                     class="form-control"
-                    id="inputFirstName"
-
+                    id="title"
+                  [(ngModel)]="selectedJobPosting.title"
                   />
                 </div>
                 <div class="col-12 col-md-6">
@@ -283,6 +304,7 @@
                     class="form-control"
                     id="inputLastName"
                     value="HTML, CSS, JavaScript, React ..."
+                    [(ngModel)]="selectedJobPosting.requirements"
                   />
                 </div>
                 <div class="col-12 col-md-6">
@@ -294,17 +316,7 @@
                     class="form-control"
                     id="inputEducation"
                     value=""
-                  />
-                </div>
-                <div class="col-12 col-md-6">
-                  <label for="address" class="form-label"
-                    >Address</label
-                  >
-                  <input
-                    type="number"
-                    class="form-control"
-                    id="address"
-                    value=""
+                    [(ngModel)]="selectedJobPosting.minimumSalary"
                   />
                 </div>
                 <div class="col-12 col-md-6">
@@ -316,9 +328,45 @@
                     class="form-control"
                     id="inputSkills"
                     value=""
+                    [(ngModel)]="selectedJobPosting.maximumSalary"
                   />
                 </div>
-
+                <div class="col-12 col-md-6">
+                  <label for="inputStreet" class="form-label">Street</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputStreet"
+                    [(ngModel)]="selectedJobPosting.address.street"
+                  />
+                </div>
+                <div class="col-12 col-md-6">
+                  <label for="inputCity" class="form-label">City</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputCity"
+                    [(ngModel)]="selectedJobPosting.address.city"
+                  />
+                </div>
+                <div class="col-12 col-md-6">
+                  <label for="inputState" class="form-label">State</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputState"
+                    [(ngModel)]="selectedJobPosting.address.state"
+                  />
+                </div>
+                <div class="col-12 col-md-6">
+                  <label for="inputZip" class="form-label">Zip Code</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputZip"
+                    [(ngModel)]="selectedJobPosting.address.zipCode"
+                  />
+                </div>
                 <div class="col-12 col-md-6">
                   <label for="positions" class="form-label"
                     >Positions</label
@@ -327,17 +375,18 @@
                     type="number"
                     class="form-control"
                     id="positions"
-                    value="1"
+                    value=""
+                    [(ngModel)]="selectedJobPosting.positions"
                   />
                 </div>
                 <div class="col-12">
                   <label for="inputAbout" class="form-label">Description</label>
-                  <textarea class="form-control" id="inputAbout">
+                  <textarea class="form-control" id="inputAbout" [(ngModel)]="selectedJobPosting.description">
                   </textarea>
                 </div>
 
                 <div class="col-12">
-                  <button type="submit" class="btn btn-success">
+                  <button (click)="addNewJobPosting(selectedCompany.id, selectedJobPosting)" type="submit" class="btn btn-success">
                     Post new job
                   </button>
                 </div>

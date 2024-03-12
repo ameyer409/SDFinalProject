@@ -138,7 +138,7 @@ public class CompanyController {
 	public JobPosting creatCompanyJobPosting(@RequestBody JobPosting jobPost, @PathVariable("id") int id, Principal principal, HttpServletRequest req, HttpServletResponse res) {
 		JobPosting createdJobPosting;
 		try {
-			createdJobPosting = jobServ.createJobPosting(jobPost);
+			createdJobPosting = jobServ.createJobPosting(id, jobPost);
 			res.setStatus(201);
 			res.setHeader("Location", req.getRequestURL().append("/").append(createdJobPosting.getId()).toString());
 		} catch (Exception e) {
