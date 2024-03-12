@@ -368,7 +368,7 @@
   <div class="container">
     <div class="row m-4">
       <!-- Job card -->
-      <div [routerLink]="['/jobDetailApplicantView/' + item.id]" class="col-lg-4 col-md-6 col-sm-6" *ngFor="let item of apps">
+      <div [routerLink]="['/jobDetailApplicantView/' + item.jobPosting.id]" class="col-lg-4 col-md-6 col-sm-6" *ngFor="let item of apps">
         <div class="category mb-30">
           <div class="job">
 

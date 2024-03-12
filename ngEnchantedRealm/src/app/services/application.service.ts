@@ -36,4 +36,25 @@ export class ApplicationService {
       })
     );
   }
+
+  public create(id: number, application: Application): Observable<Application> {
+    return this.http.post<Application>(this.url + '/' + id, application, this.getHttpOptions()).pipe(
+      catchError((err: any) => {
+        return throwError(
+          () => new Error('ApplicationService.create(): error creating Application: ' + err)
+        );
+      })
+    );
+  }
+
+  public destroy(id: number): Observable<Application> {
+    return this.http.delete<Application>(this.url + '/' + id, this.getHttpOptions()).pipe(
+      catchError((err: any) => {
+        return throwError(
+          () => new Error('ApplicationService.destroy(): error deleting Application: ' + err)
+          );
+        })
+    );
+  }
+
 }

@@ -19,6 +19,7 @@ export const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'applicantProfile', component: ApplicantProfileComponent },
   { path: 'companyProfile', component: CompanyProfileComponent },
+  { path: 'companyProfile/:id', component: CompanyProfileComponent },
   { path: 'viewAllJobsApplicant', component: JobPostingComponent },
   { path: 'viewAllJobsCompany', component: JobPostingCompanyViewComponent },
 
