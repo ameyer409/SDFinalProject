@@ -8,6 +8,7 @@ import { JobpostingService } from '../../services/jobposting.service';
 import { Application } from '../../models/application';
 import { Applicant } from '../../models/applicant';
 import { ApplicationService } from '../../services/application.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-job-posting',
@@ -31,12 +32,15 @@ export class JobPostingComponent implements OnInit{
     private router: Router,
     private jobService: JobpostingService,
     private applicantServ: ApplicantService,
-    private appService: ApplicationService
+    private appService: ApplicationService,
+    private auth: AuthService
     ) {}
 
   ngOnInit(): void {
     this.loadJobPostings();
-    this.getApplicant();
+    if(this.auth.checkLogin()){
+      this.getApplicant();
+    }
   }
 
   public loadJobPostings(){
@@ -82,6 +86,7 @@ export class JobPostingComponent implements OnInit{
       this.appService.create(newApp.applicant.id, newApp).subscribe({
         next: (result) => {
           this.loadJobPostings();
+          this.getApplications();
           // this.router.navigateByUrl('/viewAllJobsApplicant')
         },
         error: (err) => {

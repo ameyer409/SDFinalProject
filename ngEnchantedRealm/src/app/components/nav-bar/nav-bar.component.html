@@ -28,7 +28,7 @@
         <!--  nav_menu -->
         <ul id="menu-menu-1" class="navbar-nav">
           <li
-            *ngIf="isApplicant()"
+            *ngIf="!isCompany()"
             class="menu-item menu-item-type-custom menu-item-object-custom nav-item nav-item-32739"
           >
             <a class="nav-link" [routerLink]="['/viewAllJobsApplicant']">
