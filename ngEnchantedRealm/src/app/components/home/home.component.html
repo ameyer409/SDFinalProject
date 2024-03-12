@@ -20,7 +20,12 @@
             partnerships with companies, recruiters, and applicants.
           </p>
           <div class="d-grid gap-2 d-sm-flex">
-            <button type="button" class="btn btn-primary bsb-btn-3xl">
+            <button
+              type="button"
+              *ngIf="!isLoggedIn()"
+              class="btn btn-primary bsb-btn-3xl"
+              [routerLink]="['/viewAllJobsApplicant']"
+            >
               View All Jobs Opening
             </button>
           </div>
@@ -96,6 +101,8 @@
                 <a
                   href="#!"
                   class="btn btn-accent bsb-btn-3xl rounded mb-0 text-nowrap"
+                  *ngIf="!isLoggedIn()"
+                  [routerLink]="['/register']"
                 >
                   Register/ Sign in</a
                 >
@@ -291,7 +298,9 @@
               We believe in client satisfaction. Here are some testimonials by
               our worthy clients.
             </p>
-            <a href="#!" class="btn bsb-btn-2xl btn-primary"
+            <a
+              class="btn bsb-btn-2xl btn-primary"
+              [routerLink]="['/testimonial']"
               >More Testimonials</a
             >
           </div>
@@ -654,7 +663,7 @@
             <div
               class="bg-white position-relative border rounded shadow-sm overflow-hidden"
             >
-              <form class="position-relative z-1" action="#!">
+              <div class="position-relative z-1">
                 <div class="row gy-4 gy-xl-5 p-4 p-xl-5">
                   <div class="col-12">
                     <label for="fullname" class="form-label"
@@ -666,6 +675,7 @@
                       id="fullname"
                       value=""
                       required
+                      [(ngModel)]="formFullName"
                     />
                   </div>
                   <div class="col-12 col-md-6">
@@ -692,6 +702,7 @@
                         class="form-control"
                         id="email"
                         value=""
+                        [(ngModel)]="formEmail"
                         required
                       />
                     </div>
@@ -714,10 +725,11 @@
                         </svg>
                       </span>
                       <input
-                        type="tel"
+                        type="text"
                         class="form-control"
                         id="phone"
                         value=""
+                        [(ngModel)]="formPhoneNumber"
                       />
                     </div>
                   </div>
@@ -731,6 +743,7 @@
                       id="subject"
                       value=""
                       required
+                      [(ngModel)]="formSubject"
                     />
                   </div>
                   <div class="col-12">
@@ -742,17 +755,30 @@
                       id="message"
                       rows="3"
                       required
+                      [(ngModel)]="formMessage"
                     ></textarea>
                   </div>
                   <div class="col-12">
                     <div class="d-grid">
-                      <button class="btn btn-primary btn-lg" type="submit">
+                      <button
+                        class="btn btn-primary btn-lg"
+                        type="submit"
+                        (click)="sendMessage()"
+                        *ngIf="!isMessageSent"
+                      >
                         Send Message
+                      </button>
+                      <button
+                        class="btn btn-success btn-lg"
+                        type="submit"
+                        *ngIf="isMessageSent"
+                      >
+                        Message sent
                       </button>
                     </div>
                   </div>
                 </div>
-              </form>
+              </div>
               <div
                 class="bsb-circle bg-accent border border-4 border-accent position-absolute top-100 start-100 translate-middle"
               ></div>
