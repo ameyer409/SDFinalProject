@@ -6,7 +6,12 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.enchantedrealm.entities.Address;
+import com.skilldistillery.enchantedrealm.entities.Company;
+import com.skilldistillery.enchantedrealm.entities.Industry;
 import com.skilldistillery.enchantedrealm.entities.JobPosting;
+import com.skilldistillery.enchantedrealm.repositories.AddressRepository;
+import com.skilldistillery.enchantedrealm.repositories.CompanyRepository;
 import com.skilldistillery.enchantedrealm.repositories.JobPostingRepository;
 
 @Service
@@ -14,6 +19,12 @@ public class JobPostingServiceImpl implements JobPostingService{
 	
 	@Autowired
 	JobPostingRepository jpRepo;
+	
+	@Autowired
+	CompanyRepository companyRepo;
+	
+	@Autowired
+	AddressRepository addRepo;
 	
 	@Override
 	public List<JobPosting> index() {
@@ -76,8 +87,18 @@ public class JobPostingServiceImpl implements JobPostingService{
 	}
 
 	@Override
-	public JobPosting createJobPosting(JobPosting jobPost) {
-		// TODO Auto-generated method stub
+	public JobPosting createJobPosting(int id, JobPosting jobPost) {
+		Company company = companyRepo.findById(id);
+		if(company != null) {
+			Address address = jobPost.getAddress();
+			addRepo.save(address);
+			jobPost.setCompany(company);
+			jobPost.setAddress(address);
+			Industry industry = new Industry();
+			industry.setId(1);
+			jobPost.setIndustry(industry);
+			return jpRepo.saveAndFlush(jobPost);	
+		}
 		return null;
 	}
 	

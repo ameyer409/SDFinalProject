@@ -291,8 +291,8 @@
                   <input
                     type="text"
                     class="form-control"
-                    id="inputFirstName"
-
+                    id="title"
+                  [(ngModel)]="selectedJobPosting.title"
                   />
                 </div>
                 <div class="col-12 col-md-6">
@@ -304,6 +304,7 @@
                     class="form-control"
                     id="inputLastName"
                     value="HTML, CSS, JavaScript, React ..."
+                    [(ngModel)]="selectedJobPosting.requirements"
                   />
                 </div>
                 <div class="col-12 col-md-6">
@@ -315,17 +316,7 @@
                     class="form-control"
                     id="inputEducation"
                     value=""
-                  />
-                </div>
-                <div class="col-12 col-md-6">
-                  <label for="address" class="form-label"
-                    >Address</label
-                  >
-                  <input
-                    type="number"
-                    class="form-control"
-                    id="address"
-                    value=""
+                    [(ngModel)]="selectedJobPosting.minimumSalary"
                   />
                 </div>
                 <div class="col-12 col-md-6">
@@ -337,9 +328,45 @@
                     class="form-control"
                     id="inputSkills"
                     value=""
+                    [(ngModel)]="selectedJobPosting.maximumSalary"
                   />
                 </div>
-
+                <div class="col-12 col-md-6">
+                  <label for="inputStreet" class="form-label">Street</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputStreet"
+                    [(ngModel)]="selectedJobPosting.address.street"
+                  />
+                </div>
+                <div class="col-12 col-md-6">
+                  <label for="inputCity" class="form-label">City</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputCity"
+                    [(ngModel)]="selectedJobPosting.address.city"
+                  />
+                </div>
+                <div class="col-12 col-md-6">
+                  <label for="inputState" class="form-label">State</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputState"
+                    [(ngModel)]="selectedJobPosting.address.state"
+                  />
+                </div>
+                <div class="col-12 col-md-6">
+                  <label for="inputZip" class="form-label">Zip Code</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputZip"
+                    [(ngModel)]="selectedJobPosting.address.zipCode"
+                  />
+                </div>
                 <div class="col-12 col-md-6">
                   <label for="positions" class="form-label"
                     >Positions</label
@@ -348,17 +375,18 @@
                     type="number"
                     class="form-control"
                     id="positions"
-                    value="1"
+                    value=""
+                    [(ngModel)]="selectedJobPosting.positions"
                   />
                 </div>
                 <div class="col-12">
                   <label for="inputAbout" class="form-label">Description</label>
-                  <textarea class="form-control" id="inputAbout">
+                  <textarea class="form-control" id="inputAbout" [(ngModel)]="selectedJobPosting.description">
                   </textarea>
                 </div>
 
                 <div class="col-12">
-                  <button type="submit" class="btn btn-success">
+                  <button (click)="addNewJobPosting(selectedCompany.id, selectedJobPosting)" type="submit" class="btn btn-success">
                     Post new job
                   </button>
                 </div>
