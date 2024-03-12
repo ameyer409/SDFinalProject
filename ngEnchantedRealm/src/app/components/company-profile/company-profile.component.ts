@@ -108,10 +108,12 @@ public showAddJobPostingForm(){
   }
 }
 
-public addNewJobPosting(companyId: number){
-  this.companyService.addNewJobPosting(companyId).subscribe({
+public addNewJobPosting(companyId: number, jobPost: Jobposting){
+  this.companyService.addNewJobPosting(companyId, jobPost).subscribe({
     next: (jobPosting) => {
       this.selectedJobPosting = jobPosting;
+      this.getCompanyProfile();
+      this.showAddJobPostingForm();
     },
     error: (err) => {
       console.error("CompanyComponent.ts: error creating new job posting");
