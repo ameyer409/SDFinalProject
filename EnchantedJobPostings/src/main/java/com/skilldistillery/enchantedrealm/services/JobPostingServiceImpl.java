@@ -74,6 +74,12 @@ public class JobPostingServiceImpl implements JobPostingService{
 	public List<JobPosting> findByCompanyId(int id) {
 		return jpRepo.findByCompany_id(id);
 	}
+
+	@Override
+	public JobPosting createJobPosting(JobPosting jobPost) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 }

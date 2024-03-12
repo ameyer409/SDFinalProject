@@ -6,36 +6,43 @@ import { Application } from '../../models/application';
 import { Jobposting } from '../../models/jobposting';
 import { Company } from '../../models/company';
 import { CompanyService } from '../../services/company.service';
+import { RouterLink } from '@angular/router';
 
 
 @Component({
   selector: 'app-company-profile',
   standalone: true,
   imports: [FormsModule,
-            CommonModule],
+            CommonModule,
+          RouterLink],
   templateUrl: './company-profile.component.html',
   styleUrl: './company-profile.component.css'
 })
 export class CompanyProfileComponent implements OnInit{
 
 constructor(private companyService: CompanyService){};
-
-ngOnInit(): void {
-this.getCompanyProfile();
-}
-
 public applications: Application[] = [];
 public jobpostings: Jobposting[] = [];
 public user: User = new User;
+
+public companyToEdit: Company | null = null;
 
 public selectedJobPosting: Jobposting = new Jobposting();
 
 public selectedCompany: Company = new Company;
 
+
+ngOnInit(): void {
+this.getCompanyProfile();
+}
+
+
+
 public showCompanyDetails(companyId: number){
   this.companyService.show(companyId).subscribe({
     next: (company) => {
       this.selectedCompany = company;
+      console.log(companyId)
     },
     error: (err) => {
       console.error("CompanyComponent.ts: error loading company page");
@@ -48,6 +55,7 @@ public getCompanyProfile(){
   this.companyService.getCompanyProfile().subscribe({
     next: (company) => {
       this.selectedCompany = company;
+      this.getJobPostings(this.selectedCompany.id);
     },
     error: (err) => {
       console.error("CompanyComponent.ts: error loading company page");
@@ -60,6 +68,7 @@ public editCompany(company: Company){
   this.companyService.update(company).subscribe({
     next: (company) => {
       this.selectedCompany = company;
+      this.companyToEdit = company;
     },
     error: (err) => {
       console.error("CompanyComponent.ts: error loading company page");
@@ -68,10 +77,11 @@ public editCompany(company: Company){
   });
 }
 
-public getJobPostings(companyId: number){
-  this.companyService.findJobPostings(companyId).subscribe({
+public getJobPostings(id: number){
+  this.companyService.findJobPostings(id).subscribe({
     next: (jobPostings) => {
       this.jobpostings = jobPostings;
+      console.log(jobPostings);
     },
     error: (err) => {
       console.error("CompanyComponent.ts: error loading company job postings");

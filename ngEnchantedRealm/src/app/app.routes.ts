@@ -39,6 +39,10 @@ export const routes: Routes = [
     component: JobDetailCompanyViewComponent,
   },
   {
+    path: 'jobDetailCompanyView/:id',
+    component: JobDetailCompanyViewComponent,
+  },
+  {
     path: 'jobDetailGuestView',
     component: JobDetailGuestViewComponent,
   },

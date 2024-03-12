@@ -52,7 +52,7 @@
                   </li>
                 </ul>
                 <div class="d-grid m-1">
-                  <button class="btn btn-outline-success" type="button">
+                  <button (click)="editCompany(selectedCompany)" class="btn btn-outline-success" type="button">
                     Edit Profile
                   </button>
                 </div>
@@ -87,7 +87,7 @@
                     <h6 class="mb-1">
                       <span class="bii bi-geo-alt-fill me-2">Location</span>
                     </h6>
-                    <span>Mountain View, California</span>
+                    <span>{{selectedCompany.address.city}} , {{selectedCompany.address.state}}</span>
                   </li>
                   <li class="list-group-item">
                     <h6 class="mb-1">
@@ -107,7 +107,7 @@
         <div class="card widget-card border-light shadow-sm">
           <div class="card-body p-4">
             <!-- Edit Username and Password -->
-            <div id="edit-username-password">
+            <!-- <div id="edit-username-password">
               <h5 class="mb-3">Edit Username / Password</h5>
 
               <div class="row gy-3 gy-xxl-4">
@@ -138,7 +138,7 @@
                   </button>
                 </div>
               </div>
-            </div>
+            </div> -->
             <!-- / Edit Username and Password -->
           </div>
         </div>
@@ -165,7 +165,7 @@
                 <div
                   class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3"
                 >
-                  <div class="p-2">Microsoft Inc.</div>
+                  <div class="p-2">{{selectedCompany.name}}</div>
                 </div>
                 <div
                   class="col-5 col-md-3 bg-light border-bottom border-white border-3"
@@ -180,54 +180,36 @@
                 <div
                   class="col-5 col-md-3 bg-light border-bottom border-white border-3"
                 >
-                  <div class="p-2">Industry</div>
-                </div>
-                <div
-                  class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3"
-                >
-                  <div class="p-2">Software, Service</div>
-                </div>
-                <div
-                  class="col-5 col-md-3 bg-light border-bottom border-white border-3"
-                >
                   <div class="p-2">Address</div>
                 </div>
                 <div
                   class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3"
                 >
-                  <div class="p-2">Mountain View, California</div>
+                  <div class="p-2">{{selectedCompany.address.city}} , {{selectedCompany.address.state}}</div>
                 </div>
-                <div
-                class="col-5 col-md-3 bg-light border-bottom border-white border-3"
-              >
-                <div class="p-2">Logo</div>
-              </div>
-              <div
-                class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3"
-              >
-                <div class="p-2"><img src="" alt=""></div>
-              </div>
               </div>
             </div>
             <!-- Profile Section -->
 
             <!-- Edit Profile -->
-            <div id="edit-profile">
+            <div *ngIf="companyToEdit != null" id="edit-profile">
               <h5 class="mb-3">Edit profile</h5>
 
               <div class="row gy-3 gy-xxl-4">
                 <div class="col-12 col-md-6">
-                  <label for="inputFirstName" class="form-label"
+                  <label for="name" class="form-label"
                     >{{selectedCompany.name}}</label
                   >
                   <input
                     type="text"
                     class="form-control"
-                    id="inputFirstName"
-                    value="Microsoft"
+                    id="inputCompanyName"
+                    placeholder="{{selectedCompany.name}}"
+                    [(ngModel)]="companyToEdit.name"
                   />
+
                 </div>
-                <div class="col-12 col-md-6">
+                <!-- <div class="col-12 col-md-6">
                   <label for="inputLastName" class="form-label"
                     >Year founded</label
                   >
@@ -237,34 +219,23 @@
                     id="inputLastName"
                     value="1975"
                   />
-                </div>
-                <div class="col-12 col-md-6">
-                  <label for="inputEducation" class="form-label"
-                    >Business Sector</label
-                  >
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="inputEducation"
-                    value="Software, Service"
-                  />
-                </div>
+                </div> -->
                 <div class="col-12 col-md-6">
                   <label for="inputJob" class="form-label">Address</label>
                   <input
                     type="text"
                     class="form-control"
                     id="inputJob"
-                    value="Mountain View, California"
+                    placeholder="{{selectedCompany.address.city}} , {{selectedCompany.address.state}}"
+                    value="{{selectedCompany.address}}"
                   />
                 </div>
 
 
                 <div class="col-12">
                   <label for="inputAbout" class="form-label">About</label>
-                  <textarea class="form-control" id="inputAbout">
-Microsoft is the largest vendor of computer software in the world. It is also a leading provider of cloud computing services, video games, computer and gaming hardware, search and other online services. Microsoft's corporate headquarters is located in Redmond, Wash., and it has offices in more than 60 countries.</textarea
-                  >
+                  <textarea class="form-control" id="inputAbout" placeholder="{{selectedCompany.overview}}" [(ngModel)]="companyToEdit.overview">
+                  </textarea>
                 </div>
                 <div class="col-12">
                   <label for="inputProfilePictureUrl" class="form-label"
@@ -274,11 +245,12 @@ Microsoft is the largest vendor of computer software in the world. It is also a 
                     type="text"
                     class="form-control"
                     id="inputProfilePictureUrl"
-                    value="Some URL"
+                    value="{{selectedCompany.logo}}"
+                    [(ngModel)]="companyToEdit.logo"
                   />
                 </div>
                 <div class="col-12">
-                  <button type="submit" class="btn btn-success">
+                  <button (click)="editCompany(companyToEdit)" type="submit" class="btn btn-success">
                     Save Changes
                   </button>
                 </div>
@@ -393,7 +365,7 @@ What Is the Job Description for a Software Developer? Software developers design
 
   <div class="container">
     <div class="row m-4">
-      <!-- Job card -->
+      <!-- Job card
       <div class="col-lg-4 col-md-6 col-sm-6">
         <div class="category mb-30">
           <div class="job">
@@ -426,10 +398,10 @@ What Is the Job Description for a Software Developer? Software developers design
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
       <!-- / Job card -->
 
-      <!-- Job card -->
+      <!-- Job card
       <div class="col-lg-4 col-md-6 col-sm-6">
         <div class="category mb-30">
           <div class="job">
@@ -464,10 +436,10 @@ What Is the Job Description for a Software Developer? Software developers design
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
       <!-- / Job card -->
 
-      <!-- Job card -->
+      <!-- Job card
       <div class="col-lg-4 col-md-6 col-sm-6">
         <div class="category mb-30">
           <div class="job">
@@ -498,11 +470,11 @@ What Is the Job Description for a Software Developer? Software developers design
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
       <!-- / Job card -->
 
       <!-- Job card -->
-      <div class="col-lg-4 col-md-6 col-sm-6">
+      <!-- <div class="col-lg-4 col-md-6 col-sm-6">
         <div class="category mb-30">
           <div class="job">
             <a href=""
@@ -534,21 +506,19 @@ What Is the Job Description for a Software Developer? Software developers design
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
       <!-- / Job card -->
 
       <!-- Job card -->
-      <div class="col-lg-4 col-md-6 col-sm-6">
+      <div [routerLink]="['/jobDetailCompanyView/' + post.id]" *ngFor="let post of jobpostings" class="col-lg-4 col-md-6 col-sm-6">
         <div class="category mb-30">
           <div class="job">
-            <a href=""
-              ><span class="colors5 mb-4"
-                >Foreign Language Research Analyst</span
-              ></a
-            >
+            <span class="colors5 mb-4"
+                >{{post.title}}</span
+              >
             <ul class="place">
               <li>
-                <p><i class="fas fa-map-marker-alt pe-2"></i> New York, USA</p>
+                <p><i class="fas fa-map-marker-alt pe-2"></i>{{post.address.city}} , {{post.address.state}}</p>
               </li>
               <li>
                 <p class="ps-5">
@@ -558,13 +528,13 @@ What Is the Job Description for a Software Developer? Software developers design
             </ul>
             <div class="d-flex align-items-center justify-content-between m-2">
               <div class="left">
-                <p>Globe Solution Ltd.</p>
+                <p>{{post.company.name}}</p>
               </div>
-              <div class="badge bg-success">$90K - $180K</div>
+              <div class="badge bg-success">${{post.minimumSalary}} - ${{post.maximumSalary}}</div>
             </div>
             <div class="d-flex align-items-center justify-content-between m-2">
               <div>
-                <div class="badge bg-secondary m-1">GOLANG</div>
+                <div class="badge bg-secondary m-1">Positions: {{post.positions}}</div>
                 <div class="badge bg-secondary m-1">SENIOR</div>
                 <div class="badge bg-secondary m-1">ENGINEER</div>
                 <div class="badge bg-secondary m-1">BACKEND</div>
