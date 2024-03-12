@@ -36,7 +36,8 @@ export class JobDetailApplicantViewComponent implements OnInit{
     private activatedRoute: ActivatedRoute,
     private jobService: JobpostingService,
     private applicantService: ApplicantService,
-    private appService: ApplicationService
+    private appService: ApplicationService,
+    private auth: AuthService
   ){}
 
   ngOnInit(): void {
@@ -68,7 +69,9 @@ export class JobDetailApplicantViewComponent implements OnInit{
             this.jobService.show(jobId).subscribe({
               next: (jobPost) => {
                   this.job = jobPost;
-                  this.getApps(this.job.id);
+                  if(this.auth.checkLogin()){
+                    this.getApps(this.job.id);
+                  }
               },
               error: (err) => {
                 console.error('JobDetailAplicantViewComponent.ngOnInt(): error retreiving JobPosting:');
