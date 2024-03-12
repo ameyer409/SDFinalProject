@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { AuthService } from './auth.service';
 import { Observable, catchError, throwError } from 'rxjs';
 import { Jobposting } from '../models/jobposting';
+import { Application } from '../models/application';
 
 @Injectable({
   providedIn: 'root'
@@ -45,6 +46,16 @@ export class JobpostingService {
         );
       })
     );
+  }
+
+  public findApplications(id: number): Observable<Application[]> {
+    return this.http.get<Application[]>(this.url + '/' + id + '/applications', this.getHttpOptions()).pipe(
+      catchError((err: any) => {
+        return throwError(
+          () => new Error('JobPostingService.findApplications: error finding Applications: ' + err)
+        )
+      })
+    )
   }
 
 }

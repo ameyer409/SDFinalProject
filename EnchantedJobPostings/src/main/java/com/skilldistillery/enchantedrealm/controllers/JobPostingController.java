@@ -84,4 +84,9 @@ public class JobPostingController {
 		return jp;
 	}
 	
+	@GetMapping("jobpostings/{id}/applications")
+	public List<Application> findAppsByJobId(@PathVariable("id") int id, HttpServletRequest req, HttpServletResponse res) {
+		return appService.findAppsByJobId(id);
+	}
+	
 }
