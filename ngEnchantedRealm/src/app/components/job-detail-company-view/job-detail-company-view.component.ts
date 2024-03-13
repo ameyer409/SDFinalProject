@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { Jobposting } from '../../models/jobposting';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-job-detail-company-view',
@@ -28,9 +29,12 @@ ngOnInit(): void {
 }
 
 
-constructor(private jobService: JobpostingService,
+constructor(
+  private jobService: JobpostingService,
   private activatedRoute: ActivatedRoute,
-  private router: Router){};
+  private router: Router,
+  private auth: AuthService
+  ){};
 
   getJobPostingDetails() {
     this.activatedRoute.paramMap.subscribe({
@@ -42,7 +46,6 @@ constructor(private jobService: JobpostingService,
             this.jobService.show(jobId).subscribe({
               next: (jobPost) => {
                   this.jobposting = jobPost;
-                  console.log(this.jobposting);
               },
               error: (err) => {
                 console.error('JobDetailCompanyViewComponent.ngOnInt(): error retreiving JobPosting:');
@@ -55,6 +58,31 @@ constructor(private jobService: JobpostingService,
             this.router.navigateByUrl('notfound');
           }
         }
+      }
+    })
+  }
+
+  isLoggedIn() {
+    return this.auth.checkLogin();
+  }
+
+  editJobPosting() {
+    if(this.editedJobPosting == null){
+      this.editedJobPosting = Object.assign({}, this.jobposting);
+    }
+    else {
+      this.editedJobPosting = null;
+    }
+  }
+
+  updateJobPosting(jobPosting: Jobposting) {
+    this.jobService.update(jobPosting).subscribe({
+      next: (result) => {
+        this.jobposting = result;
+        this.editJobPosting();
+      },
+      error: (err) => {
+        console.log(err)
       }
     })
   }

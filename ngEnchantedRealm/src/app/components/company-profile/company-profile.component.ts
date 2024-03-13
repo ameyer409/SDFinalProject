@@ -6,7 +6,8 @@ import { Application } from '../../models/application';
 import { Jobposting } from '../../models/jobposting';
 import { Company } from '../../models/company';
 import { CompanyService } from '../../services/company.service';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 
 @Component({
@@ -20,7 +21,12 @@ import { RouterLink } from '@angular/router';
 })
 export class CompanyProfileComponent implements OnInit{
 
-constructor(private companyService: CompanyService){};
+constructor(
+  private companyService: CompanyService,
+  private auth: AuthService,
+  private activatedRoute: ActivatedRoute,
+  private router: Router
+  ){};
 public applications: Application[] = [];
 public jobpostings: Jobposting[] = [];
 public user: User = new User;
@@ -33,16 +39,37 @@ public selectedCompany: Company = new Company;
 
 
 ngOnInit(): void {
-this.getCompanyProfile();
+  if(this.auth.checkLogin()){
+    this.getCompanyProfile()
+  }
+  else {
+    this.activatedRoute.paramMap.subscribe({
+      next: (params) => {
+        let compIdStr = params.get('id');
+        if (compIdStr != null) {
+          let compId = parseInt(compIdStr);
+          if (!isNaN(compId)) {
+            this.showCompanyDetails(compId);
+          }
+          else{
+            this.router.navigateByUrl('notfound');
+          }
+        }
+      }
+    })
+  }
+
 }
 
-
+isLoggedIn() {
+  return this.auth.checkLogin();
+}
 
 public showCompanyDetails(companyId: number){
   this.companyService.show(companyId).subscribe({
     next: (company) => {
       this.selectedCompany = company;
-      console.log(companyId)
+      this.getJobPostings(this.selectedCompany.id);
     },
     error: (err) => {
       console.error("CompanyComponent.ts: error loading company page");
@@ -90,7 +117,6 @@ public getJobPostings(id: number){
   this.companyService.findJobPostings(id).subscribe({
     next: (jobPostings) => {
       this.jobpostings = jobPostings;
-      console.log(jobPostings);
     },
     error: (err) => {
       console.error("CompanyComponent.ts: error loading company job postings");
