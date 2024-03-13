@@ -29,7 +29,7 @@
                     class="list-group-item d-flex justify-content-between align-items-center"
                   >
                     <h6 class="m-0">Location</h6>
-                    <span>{{jobposting.address.state}}</span>
+                    <span>{{jobposting.address.city}}, {{jobposting.address.state}}</span>
                   </li>
                   <li
                     class="list-group-item d-flex justify-content-between align-items-center"
@@ -74,6 +74,7 @@
               <button
                 class="btn btn-primary"
                 style="display: block; width: 100%"
+                [routerLink]="['/home']"
               >
                 🔙 Back
               </button>
@@ -93,6 +94,11 @@
             <h5 class="mb-3">Salary Range</h5>
             <p class="lead mb-3">
               ${{jobposting.minimumSalary}} - ${{jobposting.maximumSalary}}
+            </p>
+
+            <h5 class="mb-3">Job Requirements</h5>
+            <p class="lead mb-3">
+              {{jobposting.requirements}}
             </p>
 
           </div>
