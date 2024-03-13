@@ -40,7 +40,7 @@ export class CompanyService {
     }
 
     public show(id: number): Observable<Company> {
-      return this.http.get<Company>(this.url + '/' + id, this.getHttpOptions()).pipe(
+      return this.http.get<Company>(this.url + '/' + id).pipe(
         catchError((err: any) => {
           return throwError(
             () => new Error('CompanyService.show: error finding Company: ' + err)
@@ -81,7 +81,7 @@ export class CompanyService {
     }
 
     public findJobPostings(id: number): Observable<Jobposting[]> {
-      return this.http.get<Jobposting[]>(this.url + '/' + id + '/jobpostings', this.getHttpOptions()).pipe(
+      return this.http.get<Jobposting[]>(this.url + '/' + id + '/jobpostings').pipe(
         catchError((err: any) => {
           return throwError(
             () => new Error('CompanyService.findJobPostings(): error retrieving Job Postings: ' + err)
