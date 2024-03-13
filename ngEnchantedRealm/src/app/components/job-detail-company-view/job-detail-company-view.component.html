@@ -38,7 +38,7 @@
                     <span>{{jobposting.positions}}</span>
                   </li>
                 </ul>
-                <div class="d-grid m-0">
+                <div *ngIf="isLoggedIn()" class="d-grid m-0">
                   <button (click)="editJobPosting()" class="btn btn-outline-info m-1" type="button">
                     Edit this job posting
                   </button>
@@ -54,7 +54,7 @@
 
           <div class="col-12">
             <!-- Number of Applicants -->
-            <div class="card widget-card border-light shadow-sm">
+            <div *ngIf="isLoggedIn()" class="card widget-card border-light shadow-sm">
               <div class="card-header text-bg-info">Application status</div>
               <div class="card-body">
                 <ul class="list-group list-group-flush mb-0">

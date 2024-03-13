@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { Jobposting } from '../../models/jobposting';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-job-detail-company-view',
@@ -31,7 +32,8 @@ ngOnInit(): void {
 constructor(
   private jobService: JobpostingService,
   private activatedRoute: ActivatedRoute,
-  private router: Router
+  private router: Router,
+  private auth: AuthService
   ){};
 
   getJobPostingDetails() {
@@ -58,6 +60,10 @@ constructor(
         }
       }
     })
+  }
+
+  isLoggedIn() {
+    return this.auth.checkLogin();
   }
 
   editJobPosting() {
