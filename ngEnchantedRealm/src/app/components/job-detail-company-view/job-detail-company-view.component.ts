@@ -73,6 +73,7 @@ constructor(
     this.jobService.update(jobPosting).subscribe({
       next: (result) => {
         this.jobposting = result;
+        this.editJobPosting();
       },
       error: (err) => {
         console.log(err)

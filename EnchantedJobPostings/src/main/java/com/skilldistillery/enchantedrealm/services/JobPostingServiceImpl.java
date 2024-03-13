@@ -10,9 +10,11 @@ import com.skilldistillery.enchantedrealm.entities.Address;
 import com.skilldistillery.enchantedrealm.entities.Company;
 import com.skilldistillery.enchantedrealm.entities.Industry;
 import com.skilldistillery.enchantedrealm.entities.JobPosting;
+import com.skilldistillery.enchantedrealm.entities.User;
 import com.skilldistillery.enchantedrealm.repositories.AddressRepository;
 import com.skilldistillery.enchantedrealm.repositories.CompanyRepository;
 import com.skilldistillery.enchantedrealm.repositories.JobPostingRepository;
+import com.skilldistillery.enchantedrealm.repositories.UserRepository;
 
 @Service
 public class JobPostingServiceImpl implements JobPostingService{
@@ -25,6 +27,9 @@ public class JobPostingServiceImpl implements JobPostingService{
 	
 	@Autowired
 	AddressRepository addRepo;
+	
+	@Autowired
+	UserRepository userRepo;
 	
 	@Override
 	public List<JobPosting> index() {
@@ -104,15 +109,26 @@ public class JobPostingServiceImpl implements JobPostingService{
 
 	@Override
 	public JobPosting updateJobPosting(String username, int id, JobPosting jobPost) {
-		
-		return null;
+		JobPosting updatedJob = null;
+		User user = userRepo.findByUsername(username);
+		if(user != null) {
+			updatedJob = findById(id);
+		if(updatedJob != null) {
+			updatedJob.setAddress(jobPost.getAddress());
+			updatedJob.setCompany(jobPost.getCompany());
+			updatedJob.setDescription(jobPost.getDescription());
+			updatedJob.setMinimumSalary(jobPost.getMinimumSalary());
+			updatedJob.setMaximumSalary(jobPost.getMaximumSalary());
+			updatedJob.setTitle(jobPost.getTitle());
+			updatedJob.setPositions(jobPost.getPositions());
+			updatedJob.setRequirements(jobPost.getRequirements());
+			jpRepo.saveAndFlush(updatedJob);
+		}
+		}
+		return updatedJob;
 	}
 
-	@Override
-	public JobPosting createJobPosting(JobPosting jobPost) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 	
 	
 	

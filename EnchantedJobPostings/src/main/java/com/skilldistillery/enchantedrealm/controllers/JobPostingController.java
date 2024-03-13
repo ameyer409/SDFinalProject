@@ -91,7 +91,7 @@ public class JobPostingController {
 		return appService.findAppsByJobId(id);
 	}
 	
-	@PutMapping("jobpostings/{id}/")
+	@PutMapping("jobpostings/{id}")
 	public JobPosting updateJobPosting(@PathVariable("id") int id, @RequestBody JobPosting jobPost, Principal principal, HttpServletResponse res, HttpServletRequest req) {
 		JobPosting updatedJobPosting;
 		try {
