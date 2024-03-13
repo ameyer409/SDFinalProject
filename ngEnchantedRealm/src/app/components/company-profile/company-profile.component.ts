@@ -90,7 +90,6 @@ public getJobPostings(id: number){
   this.companyService.findJobPostings(id).subscribe({
     next: (jobPostings) => {
       this.jobpostings = jobPostings;
-      console.log(jobPostings);
     },
     error: (err) => {
       console.error("CompanyComponent.ts: error loading company job postings");
