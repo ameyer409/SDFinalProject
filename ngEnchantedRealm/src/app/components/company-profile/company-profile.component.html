@@ -51,17 +51,17 @@
                     <span>{{jobpostings.length}}</span>
                   </li>
                 </ul>
-                <div *ngIf="isLoggedIn()" class="d-grid m-1">
+                <div *ngIf="checkCompany()" class="d-grid m-1">
                   <button (click)="setEditCompany()" class="btn btn-outline-success" type="button">
                     Edit Profile
                   </button>
                 </div>
-                <div *ngIf="isLoggedIn()" class="d-grid m-1">
+                <div *ngIf="checkCompany()" class="d-grid m-1">
                   <button class="btn btn-outline-success" type="button">
                     Edit Login Info
                   </button>
                 </div>
-                <div *ngIf="isLoggedIn()" class="d-grid m-1">
+                <div *ngIf="checkCompany()" class="d-grid m-1">
                   <button (click)="showAddJobPostingForm()" class="btn btn-outline-success" type="button">
                     Post a new job
                   </button>

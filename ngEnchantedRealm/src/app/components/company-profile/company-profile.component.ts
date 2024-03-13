@@ -40,7 +40,7 @@ public selectedCompany: Company = new Company;
 
 ngOnInit(): void {
   if(this.auth.checkLogin()){
-    this.getCompanyProfile()
+    this.getUser()
   }
   else {
     this.activatedRoute.paramMap.subscribe({
@@ -59,6 +59,47 @@ ngOnInit(): void {
     })
   }
 
+}
+
+checkCompany(): boolean{
+  if(this.user.id == this.selectedCompany.user.id) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+getUser() {
+  if (this.isLoggedIn()) {
+    this.auth.getLoggedInUser().subscribe({
+      next: (result) => {
+        this.user = result;
+        if(this.user.role == 'Company'){
+          this.getCompanyProfile()
+        }
+        else{
+          this.activatedRoute.paramMap.subscribe({
+            next: (params) => {
+              let compIdStr = params.get('id');
+              if (compIdStr != null) {
+                let compId = parseInt(compIdStr);
+                if (!isNaN(compId)) {
+                  this.showCompanyDetails(compId);
+                }
+                else{
+                  this.router.navigateByUrl('notfound');
+                }
+              }
+            }
+          })
+        }
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
 }
 
 isLoggedIn() {
@@ -105,6 +146,8 @@ public editCompany(company: Company){
 }
 
 public setEditCompany() {
+  console.log(this.user.id);
+  console.log(this.selectedCompany.user.id);
   if(this.companyToEdit == null) {
     this.companyToEdit = this.selectedCompany
   }

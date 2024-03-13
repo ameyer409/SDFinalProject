@@ -36,7 +36,7 @@
             >
               Details
             </button>
-            <button *ngIf="applicant.id != 0" (click)="applyToJobPosting(job)" class="btn btn-primary m-2">Apply</button>
+            <button *ngIf="applicant.id != 0 && !appliedTo(job)" (click)="applyToJobPosting(job)" class="btn btn-primary m-2">Apply</button>
             <span *ngIf="appliedTo(job)">✅</span>
           </div>
         </div>

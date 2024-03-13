@@ -5,9 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.enchantedrealm.entities.Address;
 import com.skilldistillery.enchantedrealm.entities.Applicant;
 import com.skilldistillery.enchantedrealm.entities.Application;
 import com.skilldistillery.enchantedrealm.entities.User;
+import com.skilldistillery.enchantedrealm.repositories.AddressRepository;
 import com.skilldistillery.enchantedrealm.repositories.ApplicantRepository;
 import com.skilldistillery.enchantedrealm.repositories.ApplicationRepository;
 import com.skilldistillery.enchantedrealm.repositories.UserRepository;
@@ -24,6 +26,9 @@ public class ApplicantServiceImpl implements ApplicantService{
 	@Autowired
 	ApplicationRepository applicationRepo;
 	
+	@Autowired
+	AddressRepository addRepo;
+	
 	@Override
 	public Applicant findById(String username, int id) {
 		User user = userRepo.findByUsername(username);
@@ -39,6 +44,9 @@ public class ApplicantServiceImpl implements ApplicantService{
 		User user = userRepo.findByUsername(username);
 		if(user != null) {
 			applicant.setUser(user);
+			Address address = new Address();
+			addRepo.saveAndFlush(address);
+			applicant.setAddress(address);
 			return appRepo.saveAndFlush(applicant);
 		}
 		
