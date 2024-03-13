@@ -34,12 +34,12 @@
                   <li
                     class="list-group-item d-flex justify-content-between align-items-center"
                   >
-                    <h6 class="m-0">Jobs Posted</h6>
-                    <span>50</span>
+                    <h6 class="m-0">Positions Available</h6>
+                    <span>{{jobposting.positions}}</span>
                   </li>
                 </ul>
                 <div class="d-grid m-0">
-                  <button class="btn btn-outline-info m-1" type="button">
+                  <button (click)="editJobPosting()" class="btn btn-outline-info m-1" type="button">
                     Edit this job posting
                   </button>
                 </div>
@@ -64,7 +64,7 @@
                         Number of applicants
                       </span>
                     </h6>
-                    <span>50</span>
+                    <span></span>
                   </li>
                 </ul>
               </div>
@@ -83,7 +83,7 @@
       </div>
       <div class="col-12 col-lg-8 col-xl-9">
         <!-- Job detail view -->
-        <div class="card widget-card border-light shadow-sm">
+        <div *ngIf="editedJobPosting == null" class="card widget-card border-light shadow-sm">
           <div class="card-body p-4">
             <h5 class="mb-3">Description</h5>
             <p class="lead mb-3">
@@ -113,7 +113,7 @@
                     type="text"
                     class="form-control"
                     id="inputFirstName"
-                    value="Some value"
+                    [(ngModel)]="editedJobPosting.title"
                   />
                 </div>
                 <div class="col-12 col-md-6">
@@ -124,7 +124,7 @@
                     type="text"
                     class="form-control"
                     id="inputLastName"
-                    value="HTML, CSS, JavaScript, React ..."
+                    [(ngModel)]="editedJobPosting.requirements"
                   />
                 </div>
                 <div class="col-12 col-md-6">
@@ -135,7 +135,7 @@
                     type="number"
                     class="form-control"
                     id="inputEducation"
-                    value="100000"
+                    [(ngModel)]="editedJobPosting.minimumSalary"
                   />
                 </div>
                 <div class="col-12 col-md-6">
@@ -146,19 +146,66 @@
                     type="number"
                     class="form-control"
                     id="inputSkills"
-                    value="170000"
+                    [(ngModel)]="editedJobPosting.maximumSalary"
+                  />
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <label for="inputStreet" class="form-label">Street</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputStreet"
+                    [(ngModel)]="editedJobPosting.address.street"
+                  />
+                </div>
+                <div class="col-12 col-md-6">
+                  <label for="inputCity" class="form-label">City</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputCity"
+                    [(ngModel)]="editedJobPosting.address.city"
+                  />
+                </div>
+                <div class="col-12 col-md-6">
+                  <label for="inputState" class="form-label">State</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputState"
+                    [(ngModel)]="editedJobPosting.address.state"
+                  />
+                </div>
+                <div class="col-12 col-md-6">
+                  <label for="inputZip" class="form-label">Zip Code</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="inputZip"
+                    [(ngModel)]="editedJobPosting.address.zipCode"
+                  />
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <label for="inputPositions" class="form-label">Positions Available</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="inputPositions"
+                    [(ngModel)]="editedJobPosting.positions"
                   />
                 </div>
 
                 <div class="col-12">
                   <label for="inputAbout" class="form-label">Description</label>
-                  <textarea class="form-control" id="inputAbout">
-What Is the Job Description for a Software Developer? Software developers design, program, build, deploy and maintain software using many different skills and tools. They also help build software systems that power networks and devices and ensure that those systems remain functional.</textarea
-                  >
+                  <textarea class="form-control" id="inputAbout" [(ngModel)]="editedJobPosting.description">
+
+                    </textarea>
                 </div>
 
                 <div class="col-12">
-                  <button type="submit" class="btn btn-success">
+                  <button (click)="updateJobPosting(editedJobPosting)" type="submit" class="btn btn-success">
                     Save changes
                   </button>
                 </div>

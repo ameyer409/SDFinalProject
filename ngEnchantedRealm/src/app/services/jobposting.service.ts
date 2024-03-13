@@ -1,9 +1,9 @@
+import { Jobposting } from './../models/jobposting';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from './auth.service';
 import { Observable, catchError, throwError } from 'rxjs';
-import { Jobposting } from '../models/jobposting';
 import { Application } from '../models/application';
 
 @Injectable({
@@ -56,6 +56,16 @@ export class JobpostingService {
         )
       })
     )
+  }
+
+  public update(jobPosting: Jobposting): Observable<Jobposting> {
+    return this.http.put<Jobposting>(this.url + '/' + jobPosting.id, jobPosting, this.getHttpOptions()).pipe(
+      catchError((err: any) => {
+        return throwError(
+          () => new Error('jobPostingService.update: error creating JobPosting: ' + err)
+        );
+      })
+    );
   }
 
 }

@@ -28,5 +28,7 @@ public interface JobPostingService {
 	
 	public List<JobPosting> findByCompanyId(int id);
 
+	public JobPosting updateJobPosting(String username, int id, JobPosting jobPost);
+	
 	public JobPosting createJobPosting(int id , JobPosting jobPost);
 }

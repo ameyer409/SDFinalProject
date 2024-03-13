@@ -25,4 +25,5 @@ public interface JobPostingRepository extends JpaRepository<JobPosting, Integer>
 	List<JobPosting> findByAddress_cityAndAddress_state(String city, String state);
 	List<JobPosting> findByCompany_id(int id);
 	
+	
 }
