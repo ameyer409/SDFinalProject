@@ -1,7 +1,7 @@
 # FinalProject
 
 ## How To Run
-This project has been deployed live to AWS at EnchantedJobPostings with all full-features. The contributors of this project are Jimmy Tran, Allan Meyer, and Jonathon McNamara.
+This project has been deployed live to AWS at <a href="http://52.3.16.232:8080/EnchantedJobPostings/#/home">EnchantedJobPostings</a> with all full-features. The contributors of this project are Jimmy Tran, Allan Meyer, and Jonathon McNamara.
 
 Users can browse the project in guest view, or login using following test accounts
 
