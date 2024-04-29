@@ -12,25 +12,25 @@ Otherwise, users can register new accounts as applicant or company with username
 
 
 ## Tech Stack - Technologies used
-Wireframing
-Figma
-Front end
-HTML
-CSS
-Bootstrap
-Javascript
-Angular 17
-Back end
-Java
-Spring framework with Hibernate
-JPA, Boot, JSTL, MVC
-Database
-MySQL and MySQL workbench
-Hosting
-AWS with Tomcat 10
+### Wireframing
+ - Figma
+### Front end
+ - HTML
+ - CSS
+ - Bootstrap
+ - Javascript
+ - Angular 17
+### Back end
+ - Java
+ - Spring framework with Hibernate
+ - JPA, Boot, JSTL, MVC
+### Database
+ - MySQL and MySQL workbench
+ - Hosting
+ - AWS with Tomcat 10
 
 ## Lessons Learned
-This project illustrated how imperative it is to be clear and concise with planning as well as being flexible to work with life circumstances(ex. moving) along with different timezones
-The planning of projects to this scale is more important than the coding. Once we have a vision of what we were making and made sure everything was mapped, the idea came to life way faster
-Allowing individual expression and freedom working on this project allowed for us to become more engaged with the project
-Communication on larger scale programs is truly the most important aspect
+ - This project illustrated how imperative it is to be clear and concise with planning as well as being flexible to work with life circumstances(ex. moving) along with different timezones
+ - The planning of projects to this scale is more important than the coding. Once we have a vision of what we were making and made sure everything was mapped, the idea came to life way faster
+ - Allowing individual expression and freedom working on this project allowed for us to become more engaged with the project
+ - Communication on larger scale programs is truly the most important aspect
